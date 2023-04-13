@@ -6,8 +6,9 @@ Proszę o przyjęcie invita. Po skopiowaniu repo uruchamiamy `npm install`
 
 1. Gałąź `main` - pushuje tam tylko Team Leader
 2. Nowa funkcja - zakładamy własny branch z nazwą funkcji.
-
-2. Pushujemy do gałęz
+![GitHub new branch](./assets/git1.png)
+![GitHub new branch](./assets/git2.png)
+3. Zmieniamy to co chcemy dodać - `commit`
 
 ## Файлы и папки
 

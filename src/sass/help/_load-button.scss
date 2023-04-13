@@ -1,0 +1,26 @@
+.load-button {
+    margin: 10px auto 0px;
+    background: getColor(sky);
+    height: 40px;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.31;
+    text-align: center;
+    color: getColor(semi-white);
+    border: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    transition: background-color $transition-time-timing;
+    position: relative;
+    bottom: 0;
+
+    &:hover {
+        cursor: pointer;
+        background: #ECEBEB;
+        color: getColor(sky);
+    }
+}

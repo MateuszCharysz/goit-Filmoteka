@@ -1,0 +1,25 @@
+* {
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  height: 100%;
+}
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+// responsywność dla ekranów o maksymalnej szerokości 768px
+@media screen and (min-width: 768px) {
+  .container {
+  }
+}
+
+// responsywność dla ekranów o maksymalnej szerokości 1280px
+@media screen and (min-width: 1280px) {
+  .container {
+  }
+}
+.flex {
+    display: flex;
+}

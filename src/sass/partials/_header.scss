@@ -1,0 +1,101 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 216px;
+  background-image: url('../images/header/header-background-mobile@1x.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 40px 20px;
+  // inne style
+
+  &__logo {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    &--film {
+      width: 24px;
+      height: 22.85px;
+      fill: transparent;
+    }
+    &--span {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 35px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: $white;
+    }
+  }
+  &__buttons {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    display: flex;
+    gap: 40px;
+    color: $white;
+  }
+  &__search {
+    width: 394px;
+    border-bottom: 0.5px solid #ffffff;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    &--input {
+      width: 100%;
+      background: transparent;
+      outline: none;
+      border: none;
+      padding: 0;
+      color: $white;
+    }
+    &--search {
+      width: 12px;
+      height: 12px;
+      fill: transparent;
+    }
+  }
+}
+@media screen and (min-width: 768px){
+    .header {
+      background-image: url('../images/header/header-background-tablet@1x.jpg');
+    }
+  }
+  @media screen and (min-width: 768px),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi) {
+    .header {
+      background-image: url('../images/header/header-background-tablet@2x.jpg');
+    }
+  }
+@media screen and (min-width: 1280px){
+  .header {
+    background-image: url('../images/header/header-background@1x.jpg');
+  }
+}
+@media screen and (min-width: 1280px),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi) {
+  .header {
+    background-image: url('../images/header/header-background@2x.jpg');
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .header {
+    background-image: url('../images/header/header-background-mobile@2x.jpg');
+  }
+}

@@ -6,6 +6,7 @@ Proszę o przyjęcie invita. Po skopiowaniu repo uruchamiamy `npm install`
 
 1. Gałąź `main` - pushuje tam tylko Team Leader
 2. Nowa funkcja - zakładamy własny branch z nazwą funkcji.
+
 2. Pushujemy do gałęz
 
 ## Файлы и папки

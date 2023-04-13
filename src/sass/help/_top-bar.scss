@@ -1,0 +1,33 @@
+.top-bar {
+  height: 50px;
+  width: 100vw;
+  background-color: getColor(sky);
+  overflow: hidden;
+  transition: height $transition-time-timing;
+  box-shadow: 0 2px 6px rgba(25, 25, 25, 0.8);
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+
+  &__headline {
+    font-size: 16px;
+    color: getColor(semi-white);
+  }
+
+  &__headline-link {
+    font-size: 16px;
+    color: getColor(semi-white);
+
+    &:hover {
+      cursor: pointer;
+    }
+    &:visited:active{
+          color: getColor(semi-white);
+          text-decoration: none;
+    }
+  }
+}

@@ -6,8 +6,17 @@ Proszę o przyjęcie invita. Po skopiowaniu repo uruchamiamy `npm install`
 
 1. Gałąź `main` - pushuje tam tylko Team Leader
 2. Nowa funkcja - zakładamy własny branch z nazwą funkcji.
-
-2. Pushujemy do gałęz
+![GitHub new branch](./assets/git1.png)
+![GitHub new branch](./assets/git2.png)
+3. Zmieniamy to co chcemy dodać - `commit`
+![GitHub commit](./assets/git3.png)
+4. Publikujemy branch - `publish`
+![GitHub publish](./assets/git4.png)
+5. Tworzymy pull requesta - `PR`
+![GitHub publish](./assets/git5.png)
+6. Wybieramy na stronie branch dev i dodajemy kogos do review
+![GitHub publish](./assets/git6.png)
+7
 
 ## Файлы и папки
 

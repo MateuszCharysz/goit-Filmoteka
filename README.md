@@ -12,6 +12,9 @@ Proszę o przyjęcie invita. Po skopiowaniu repo uruchamiamy `npm install`
 ![GitHub commit](./assets/git3.png)
 4. Publikujemy branch - `publish`
 ![GitHub publish](./assets/git4.png)
+5. Tworzymy pull requesta - `PR`
+![GitHub publish](./assets/git5.png)
+6. Dodajemy na stronie
 
 ## Файлы и папки
 

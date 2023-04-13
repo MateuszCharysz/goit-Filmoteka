@@ -10,6 +10,8 @@ Proszę o przyjęcie invita. Po skopiowaniu repo uruchamiamy `npm install`
 ![GitHub new branch](./assets/git2.png)
 3. Zmieniamy to co chcemy dodać - `commit`
 ![GitHub commit](./assets/git3.png)
+4. Publikujemy branch - `publish`
+![GitHub publish](./assets/git4.png)
 
 ## Файлы и папки
 

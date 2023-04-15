@@ -15,5 +15,5 @@ export function createPagination(totalItems, visiblePages) {
   const pagination = new Pagination(paginationContainer, options);
 
   return pagination;
-  
 }
+console.log(createPagination(200, 5));

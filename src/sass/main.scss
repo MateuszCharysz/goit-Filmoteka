@@ -5,6 +5,7 @@
 
 // Style dla pliku z przykładem HTML fragmentu
 @import '~node_modules/modern-normalize/modern-normalize.css';
+@import './utils/media-query';
 @import './general';
 @import './utils/var';
 @import './partials/header';

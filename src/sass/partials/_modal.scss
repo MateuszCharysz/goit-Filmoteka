@@ -1,0 +1,39 @@
+.backdrop {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  background: rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+}
+.modal {
+  position: relative;
+  height: calc(100% - 20px);
+  width: 280px;
+  background: $white;
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px;
+
+  @include tablet {
+    width: 704px;
+    height: 552px;
+  }
+
+  @include desktop {
+    width: 806px;
+    height: 558px;
+  }
+  &__img {
+    border-radius: 5px;
+  }
+  &__button {
+    position: absolute;
+    top: 8px;
+    width: 30px;
+    height: 30px;
+    right: 8px;
+  }
+}

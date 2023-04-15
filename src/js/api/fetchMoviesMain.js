@@ -12,7 +12,7 @@ const fetchMoviesMain = async () => {
 
 }
 
-
+TEST
 fetchMoviesMain().then(films => {
     console.log(films)
     films.map(film => {

@@ -1,0 +1,60 @@
+//Davidwalsh.name - media querry mixin aproach - specific mixin for specific sutyation
+// to use mixins here is example below:
+// .logo {
+//   font-family: 'Raleway';
+//   font-size: 24px;
+//   font-weight: 700;
+//   line-height: 1.17;
+//   color: transparent;
+//   text-decoration: none;
+//   display: block;
+//   letter-spacing: 0.03em;
+
+//   @include desktop {
+//     font-size: 26px;
+//     line-height: 1.19;
+//   }
+
+
+@mixin tablet {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin tabletx2 {
+  @media screen and (min-width: 768px) and (max-width: 1279px) and (min-resolution: 2dppx) and (min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin desktopx2 {
+  @media screen and (min-width: 1280px) and (min-resolution: 2dppx) and (min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+@mixin constant-input {
+  @media (min-width: 480px) and (max-width: 1179px) {
+    @content;
+  }
+}
+
+
+@mixin phonex2 {
+  @media (max-width: 767px) and (min-resolution: 2dppx) and (min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: 767px) {
+    @content
+  }
+}

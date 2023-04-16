@@ -26,7 +26,7 @@ const openModal = e => {
   // blokuje możliwość skrolowania w momencie uruchomienia modala
   document.body.classList.add('overflow-off');
 
-  closeModalButton = document.querySelector('#modal__close');
+  const closeModalButton = document.querySelector('#modal__close');
 
   // pobranie id filmu
   const movieId = MODAL_TEST.id;

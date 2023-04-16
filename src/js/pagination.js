@@ -22,7 +22,7 @@ export { createPagination };
 // rendering movie cards //
 
 // import fetch get trending - na końcu musi być '&page=${page}' //
-const pagination = createPagination(data.total_results, data.total_pages);
+// const pagination = createPagination(data.total_results, data.total_pages);
 
 // KEY WORDS //
 //przy api keywords potrzebuje na końcu dodać '&page=${page}'

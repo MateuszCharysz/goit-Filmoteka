@@ -1,42 +1,89 @@
-'use strict';
-//DOM
-const gallery = document.querySelector('.gallery');
+import axios from 'axios';
+import './sass/_gallery.scss';
 
-const createItem = item => {
-  const { comments, downloads, likes, largeImageURL, tags, previewURL, views } =
-    item;
-  let itemMarkup = `<a class="gallery__item" href="${largeImageURL}" toClear>
-  <img class="gallery__image" src="${previewURL}" alt="${tags}" loading="lazy"/>
-  <div class="gallery__image-info">
-    <div class="gallery__image-info-item">
-        <p><b>Likes</b></p>
-        <p class="gallery__image-info-display">${likes}</p>
-    </div>
-        <div class="gallery__image-info-item">
-        <p><b>Views</b></p>
-        <p class="gallery__image-info-display">${views}</p>
-    </div>
-    <div class="gallery__image-info-item">
-        <p><b>Comments</b></p>
-        <p class="gallery__image-info-display">${comments}</p>
-    </div>
-    <div class="gallery__image-info-item">
-        <p><b>Downloads</b></p>
-        <p class="gallery__image-info-display">${downloads}</p>
-    </div>
-  </div>
-  </a>
-  `;
-  return itemMarkup;
-};
+const movieBox = document.querySelector('.box');
+const loader = document.querySelector('.loader');
+const apiKey = '64cb7e9375c055230d64b013c4bca79f';
 
-export const drawGallery = input =>
-  (gallery.innerHTML = [...input.data.hits]
-    .map(item => createItem(item))
-    .join(''));
 
-export const appendGallery = input =>
-  gallery.insertAdjacentHTML(
-    'beforeend',
-    [...input.data.hits].map(item => createItem(item)).join(''),
-  );
+let movieID = [];
+let movieDetails = [];
+
+async function fetchingMovies(page = 1) {
+  const media_type = 'movie';
+  const time_window = 'week';
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/trending/${media_type}/${time_window}?api_key=${apiKey}&page=${page}`
+    );
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function renderMovieList(moviesData) {
+  moviesData.results.forEach(movie => {
+    movieID.push(movie.id);
+  });
+  return movieID;
+}
+
+async function fetchingMovieDetails() {
+  for (let id of movieID) {
+    await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.status);
+        }
+        return response.json();
+      })
+      .then(data => movieDetails.push(data));
+  }
+  // console.log(movieDetails);
+}
+
+async function updatingMovieHTML() {
+  let myHTML = '';
+  let genre;
+  let yearOfProduction;
+  await movieDetails.forEach(movie => {
+    genre = movie.genres.map(genre => ` ${genre.name}`);
+    yearOfProduction = movie.release_date.substring(0, 4);
+    myHTML += `<div class="movie__card">
+    <div class="movie__imgbox">
+    <img class="movie__img" src="https://image.tmdb.org/t/p/w500${
+      movie.poster_path
+    }"
+      alt="${movie.title}" loading="lazy"/>
+    </div>
+    <p style="display:none">${movie.id}<p>
+    <p class="movie__title">
+        <b>${movie.title}</b>
+      </p>
+    <div class="movie__info">
+      <p class="movie__genres">
+        ${genre.slice(0, 2)}&nbsp;
+      </p>
+      <p class="movie__year">
+        | ${yearOfProduction}
+      </p>
+    </div>
+  </div>`;
+  });
+  movieBox.innerHTML += myHTML;
+}
+
+export async function showMovies() {
+  const moviesData = await fetchingMovies();
+  renderMovieList(moviesData);
+  const movieID = await fetchingMovieDetails();
+  loader.classList.add('loader--visibility');
+  updatingMovieHTML(movieID);
+}
+
+window.addEventListener('load', showMovies);
+
+
+

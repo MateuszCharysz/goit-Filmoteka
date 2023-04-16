@@ -1,8 +1,10 @@
 'use strict';
 
+import { MODAL_TEST } from '../testfiles/modal_test';
 import { closeModal } from './closeModal';
-import { markup } from './modalMarkup';
+import { markupData } from './modalMarkup';
 
+console.table(MODAL_TEST.backdrop_path);
 const mainContent = document.querySelector('#main');
 
 // funkcja otwierająca modal
@@ -15,10 +17,13 @@ const openModal = e => {
   // utworzenie nowego elementu backdrop i dodanie klasy "backdrop"
   const backdrop = document.createElement('div');
   backdrop.classList.add('backdrop');
-  backdrop.innerHTML = markup;
+  backdrop.innerHTML = markupData(MODAL_TEST);
 
   // dodanie elementu backdrop do ciała dokumentu
   document.body.appendChild(backdrop);
+
+  // blokuje możliwość skrolowania w momencie uruchomienia modala
+  document.body.classList.add('overflow-off')
 
   closeModalButton = document.querySelector('#modal__close');
 

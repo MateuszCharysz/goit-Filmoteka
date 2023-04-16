@@ -1,5 +1,5 @@
 #pagination {
-  //   flex-shrink: 0;
+  flex-shrink: 0;
   margin-bottom: 40px;
   margin-top: 0;
   @media (min-width: 768px) {
@@ -11,15 +11,6 @@
     font-weight: 500;
     color: $black;
 
-    &:hover {
-      background-color: $main-oragne-color;
-      text-align: center;
-      border-radius: 5px;
-      width: 40px;
-      height: 40px;
-      padding-top: 20px;
-      color: $white;
-    }
     @media (min-width: 768px) {
       font-size: 14px;
     }
@@ -80,7 +71,7 @@
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
       color: $white;
-      background-color: #d4d4d4;
+      background-color: $background-color-pagination;
     }
     @media (min-width: 768px) {
       width: 40px;
@@ -88,20 +79,20 @@
     }
   }
 
-  //   .tui-ico-next,
-  //   .tui-ico-prev {
-  //     width: 16px;
-  //     height: 16px;
-  //     position: absolute;
-  //     top: 50%;
-  //     left: 50%;
-  //     transform: translate(-50%, -50%);
-  //     background-position: center;
-  //   }
-  //   .tui-ico-prev {
-  //     background-image: url('');
-  //   }
-  //   .tui-ico-next {
-  //     background-image: url('');
-  //   }
+  .tui-ico-next,
+  .tui-ico-prev {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-position: center;
+  }
+  .tui-ico-prev {
+    background-image: url('../images/svg/arrow-left.svg');
+  }
+  .tui-ico-next {
+    background-image: url('../images/svg/arrow-right.svg');
+  }
 }

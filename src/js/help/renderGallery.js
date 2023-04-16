@@ -1,9 +1,8 @@
 import axios from 'axios';
-import './sass/_gallery.scss';
 
 const movieBox = document.querySelector('.box');
 const loader = document.querySelector('.loader');
-const apiKey = '64cb7e9375c055230d64b013c4bca79f';
+const apiKey = '4f9b3bc6cd1b3d6e0d830ad9a5ccfefd';
 
 
 let movieID = [];
@@ -76,7 +75,7 @@ async function updatingMovieHTML() {
 }
 
 export async function showMovies() {
-  const moviesData = await fetchingMovies();
+  // const moviesData = await fetchingMovies();
   renderMovieList(moviesData);
   const movieID = await fetchingMovieDetails();
   loader.classList.add('loader--visibility');

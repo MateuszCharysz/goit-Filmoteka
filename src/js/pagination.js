@@ -5,7 +5,7 @@ const paginationContainer = document.querySelector('#pagination');
 
 // * funkcja musi zostać zaimportowana przy renderowaniu galerii i wyszukiwaniu przez słowa kluczowe * //
 
-createPagination = (totalItems, visiblePages) => {
+const createPagination = (totalItems, visiblePages) => {
   const options = {
     totalItems: totalItems,
     itemsPerPage: 20,

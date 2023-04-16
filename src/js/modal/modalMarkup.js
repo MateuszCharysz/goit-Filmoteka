@@ -44,8 +44,8 @@ const markupData = e => {
                 <p class="modal__overview--overview">${e.overview}</p>
             </div>
         <div class="modal__buttons">
-            <button class="modal__button modal__button--watched">Add to watched</button>
-            <button class="modal__button modal__button--queue">Add to queue</button>
+            <button id="watched" class="modal__button modal__button--watched">Add to watched</button>
+            <button id="queue" class="modal__button modal__button--queue">Add to queue</button>
         </div>
     </div>
     `;

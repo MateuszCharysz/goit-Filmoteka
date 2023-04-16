@@ -74,15 +74,15 @@ async function updatingMovieHTML() {
   movieBox.innerHTML += myHTML;
 }
 
-export async function showMovies() {
-  // const moviesData = await fetchingMovies();
-  renderMovieList(moviesData);
-  const movieID = await fetchingMovieDetails();
-  loader.classList.add('loader--visibility');
-  updatingMovieHTML(movieID);
-}
+// export async function showMovies() {
+//   // const moviesData = await fetchingMovies();
+//   renderMovieList(moviesData);
+//   const movieID = await fetchingMovieDetails();
+//   loader.classList.add('loader--visibility');
+//   updatingMovieHTML(movieID);
+// }
 
-window.addEventListener('load', showMovies);
+// window.addEventListener('load', showMovies);
 
 
 

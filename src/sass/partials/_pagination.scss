@@ -90,10 +90,10 @@
     transform: translate(-50%, -50%);
     background-position: center;
   }
-  // .tui-ico-prev {
-  //   background-image: url('');
-  // }
-  // .tui-ico-next {
-  //   background-image: url('');
-  // }
+  .tui-ico-prev {
+    background-image: url('../images/svg/arrow-left.svg');
+  }
+  .tui-ico-next {
+    background-image: url('../images/svg/arrow-right.svg');
+  }
 }

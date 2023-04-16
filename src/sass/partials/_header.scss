@@ -21,6 +21,7 @@
       width: 24px;
       height: 22.85px;
       fill: transparent;
+      margin-top: 5px;
     }
     &--span {
       font-family: 'Roboto';
@@ -37,7 +38,7 @@
   &__buttons {
     position: absolute;
     right: 20px;
-    top: 40px;
+    top: 50px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -54,6 +55,7 @@
     display: flex;
     align-items: center;
     height: 20px;
+    margin-top: 55px;
     &--input {
       width: 100%;
       background: transparent;

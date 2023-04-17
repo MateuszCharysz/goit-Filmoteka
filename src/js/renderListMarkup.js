@@ -1,7 +1,7 @@
 const renderList = movies => {
   const markup = movies
     .map(movie => {
-      const tags = movie.genre_ids.map(genre => genre.name).join(', ');
+      const tags = movie.genres.map(genre => genre.name).join(', ');
       return `<div class="movie__card" data-id="${movie.id}">
             <img
               src="https://image.tmdb.org/t/p/w500/${movie.poster_path}"

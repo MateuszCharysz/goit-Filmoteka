@@ -9,7 +9,7 @@ const searchMovies = () => {
 
   fetchMovies(searchValue)
     .then(movies => {
-      const markup = renderList(movies.results);
+      const markup = renderList(movies);
       document.getElementById('main').innerHTML = markup;
 
       // wywołanie funkcji `openModal` z odpowiednimi argumentami po utworzeniu elementów z wynikami wyszukiwania.

@@ -1,3 +1,4 @@
+import { fetchMovieGenres } from './fetchMovieGenres';
 
 const fetchMovies = name => {
   const API_KEY = '64cb7e9375c055230d64b013c4bca79f';
@@ -18,6 +19,16 @@ const fetchMovies = name => {
         return Promise.reject(new Error(response.status));
       }
       return response.json();
+    })
+    .then(data => {
+      const movieIds = data.results.map(movie => movie.id);
+      const promises = movieIds.map(id => fetchMovieGenres(id));
+      return Promise.all(promises).then(genres => {
+        return data.results.map((movie, index) => ({
+          ...movie,
+          genres: genres[index],
+        }));
+      });
     })
     .catch(error => {
       console.error(error);

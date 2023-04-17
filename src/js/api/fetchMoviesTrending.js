@@ -1,4 +1,5 @@
 import { renderList } from '../renderListMarkup';
+import { fetchMovieGenres } from './fetchMovieGenres';
 
 // Pobiera aktualnie najlepsze filmy dnia
 
@@ -21,6 +22,16 @@ const fetchMoviesTrending = () => {
         return Promise.reject(new Error(response.status));
       }
       return response.json();
+    })
+    .then(data => {
+      const movieIds = data.results.map(movie => movie.id);
+      const promises = movieIds.map(id => fetchMovieGenres(id));
+      return Promise.all(promises).then(genres => {
+        return data.results.map((movie, index) => ({
+          ...movie,
+          genres: genres[index],
+        }));
+      });
     })
     .catch(error => {
       console.error(error);

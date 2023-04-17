@@ -3,6 +3,8 @@ import { fetchMoviesMain } from './js/api/fetchMoviesMain';
 import './sass/main.scss';
 
 
+
+fetchMoviesMain()
 searchMovies;
 
 

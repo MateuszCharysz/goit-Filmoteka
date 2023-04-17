@@ -14,7 +14,7 @@ const fetchMoviesMain = (pageValue) => {
         const mostPopularFilms = response.results;
         console.log(mostPopularFilms);
 
-        mostPopularFilms.map((film) => {
+        mostPopularFilms.map((film) => {// zamist tego map trzeba wstawić tutaj render galerii
             
         let mainContainer = document.querySelector("#main");
         let markup = `<p>TITLE:${film.title || film.name}</p>`;
@@ -23,7 +23,7 @@ const fetchMoviesMain = (pageValue) => {
         })
         return mostPopularFilms;
     })
-
+.catch(error =>console.log(error))
 }
 
 

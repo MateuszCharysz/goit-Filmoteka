@@ -1,0 +1,200 @@
+// usuwa możliwość skrolowania
+.overflow-off {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+.backdrop {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  background: rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: calc(100% - 20px);
+  width: 280px;
+  background: $white;
+  padding: 48px 20px;
+
+  @include tablet {
+    flex-direction: row;
+    width: 704px;
+    height: 552px;
+    padding: 40px 72px 40px 36px;
+    gap: 68px;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    width: 806px;
+    height: 558px;
+    padding: 40px 12px;
+    gap: 16px;
+  }
+  &__title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+  }
+  &__img {
+    margin-right: auto;
+    margin-bottom: auto;
+    border-radius: 5px;
+    width: 240px;
+    height: 357px;
+    @include tablet {
+      width: 264px;
+      height: 373.55px;
+    }
+    @include desktop {
+      width: 375px;
+      height: 478px;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &__item {
+    display: inline-flex;
+    &--label {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      width: 100px;
+    }
+    &--value {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      &--vote {
+        color: #8c8c8c;
+      }
+      &--vote vote_average {
+        width: 36px;
+        height: 16px;
+        border-radius: 5px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center; /* wyśrodkowanie tekstu wewnątrz elementu */
+        color: white; /* zmiana koloru tekstu na biały */
+        font-size: 12px; /* dopasowanie rozmiaru tekstu */
+        line-height: 14px; /* dopasowanie wysokości tekstu do wysokości elementu */
+        background: #ff6b01;
+        margin-right: 1px;
+      }
+      &--vote vote__count {
+        width: 36px;
+        height: 16px;
+        border-radius: 5px;
+        display: inline-flex;
+        color: #000000;
+        align-items: center;
+        justify-content: center;
+        text-align: center; /* wyśrodkowanie tekstu wewnątrz elementu */
+        font-size: 12px; /* dopasowanie rozmiaru tekstu */
+        line-height: 14px; /* dopasowanie wysokości tekstu do wysokości elementu */
+        background: #f7f7f7;
+        margin-left: 1px;
+      }
+    }
+  }
+  &__overview {
+    &--about {
+      margin-bottom: 8px;
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+    }
+    &--overview {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+  &__buttons {
+    margin-top: auto;
+    display: inline-flex;
+    justify-content: space-between;
+    @include desktop {
+      margin: 0 0 0 8px;
+      justify-content: flex-start;
+      gap: 15px;
+    }
+  }
+  &__button {
+    width: 110px;
+    height: 44px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    background-color: transparent;
+    text-transform: uppercase;
+    @include tablet {
+      width: 125.03px;
+    }
+    @include desktop {
+      width: 136px;
+    }
+    &--watched {
+      padding: 0 25px;
+      background-color: #ff6b01;
+      color: $white;
+      border: none;
+      @include tablet {
+        padding: 0;
+      }
+      @include desktop {
+        padding: 0;
+      }
+    }
+    &--close {
+      position: absolute;
+      top: 8px;
+      width: 30px;
+      height: 30px;
+      right: 8px;
+      border: none;
+    }
+  }
+  &__content {
+    height: 100%;
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+}
+.grey {
+  color: #8c8c8c;
+}
+.big {
+  text-transform: uppercase;
+}

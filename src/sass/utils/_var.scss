@@ -1,4 +1,26 @@
 /* VARIABLES  
 ============================================*/
 $white: #ffffff;
-$footer-background:#f7f7f7
+$footer-background: #f7f7f7;
+$main-oragne-color: #ff6b08;
+$black: #000;
+$footer-background:#f7f7f7;
+$background-color-pagination: #d4d4d4;
+
+$color: (
+    'pure-white': #fff,
+    'background-gray': #f7f7f7,
+    'modal-gray': #8C8C8C,
+    'dark-gray': #545454,
+    'dark': #000,
+    'goit-orange': #FF6B08,
+    'red-one': #FF001B,
+
+);
+
+@function getColor($key) {
+    @return map-get($color, $key);
+}
+//USE: color: getColor(modal-gray);
+
+$transition-time-timing: 250ms cubic-bezier(0.4, 0, 0.2, 1);

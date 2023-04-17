@@ -21,6 +21,7 @@
       width: 24px;
       height: 22.85px;
       fill: transparent;
+      margin-top: 5px;
     }
     &--span {
       font-family: 'Roboto';
@@ -37,7 +38,7 @@
   &__buttons {
     position: absolute;
     right: 20px;
-    top: 40px;
+    top: 50px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -54,6 +55,7 @@
     display: flex;
     align-items: center;
     height: 20px;
+    margin-top: 55px;
     &--input {
       width: 100%;
       background: transparent;
@@ -69,19 +71,19 @@
     }
   }
 }
-@media screen and (min-width: 768px){
-    .header {
-      background-image: url('../images/header/header-background-tablet@1x.jpg');
-    }
+@media screen and (min-width: 768px) {
+  .header {
+    background-image: url('../images/header/header-background-tablet@1x.jpg');
   }
-  @media screen and (min-width: 768px),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi) {
-    .header {
-      background-image: url('../images/header/header-background-tablet@2x.jpg');
-    }
+}
+@media screen and (min-width: 768px),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi) {
+  .header {
+    background-image: url('../images/header/header-background-tablet@2x.jpg');
   }
-@media screen and (min-width: 1280px){
+}
+@media screen and (min-width: 1280px) {
   .header {
     background-image: url('../images/header/header-background@1x.jpg');
   }
@@ -94,8 +96,18 @@
   }
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi) {
   .header {
     background-image: url('../images/header/header-background-mobile@2x.jpg');
   }
+}
+
+a:link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+a:visited {
+  color: #ffffff;
 }

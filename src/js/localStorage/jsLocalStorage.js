@@ -18,6 +18,6 @@ const load = key => {
 
 const remove = key => localStorage.removeItem(key);
 
-const JsLocalStorage = { save, load, remove };
+const jsLocalStorage = { save, load, remove };
 
-export default JsLocalStorage;
+export default jsLocalStorage;

@@ -24,7 +24,9 @@ const apiUtils = {
   API_TRENDING,
   apiUrlStringBuilder,
 };
-export default apiUtils;
+// export default apiUtils;
 //przykład użycia
 // console.log(apiUrlStringBuilder(API_TRENDING()));
+// console.log(apiUrlStringBuilder(API_TRENDING(3)));
 // console.log(apiUrlStringBuilder(API_SEARCH('dog')));
+// console.log(apiUrlStringBuilder(API_SEARCH('girl', 4)));

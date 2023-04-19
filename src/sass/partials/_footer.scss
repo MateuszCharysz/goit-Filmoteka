@@ -22,11 +22,13 @@
       display: flex;
     }
   }
-&__text {
-  margin: 10px 5px;
-}
+
+  &__text {
+    margin: 10px 5px;
+  }
+
   &__svg {
     margin: 0 10px;
-    
+
   }
 }

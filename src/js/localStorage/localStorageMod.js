@@ -10,7 +10,7 @@ import jsLocalStorage from './jsLocalStorage';
 //3. zapisujemy otrzymany array w local storage
 
 // funkcja wywoływana przy uruchomieniu strony tworząca puste katalogi id
-const createLocalStorage = () => {} // ma do zrobienia stworzenie key=watched,queued // watched=[], queued=[] 
+const createLocalStorage = () => {} // ma do zrobienia stworzenie key=watched,queued // watched=[], queued=[] (format danych to array)
 // musi też sprawdzić czy zmienne stnieją, żeby ich nie nadpisać 
 
 //argument arrayType - key który ma być użyty przy ładowaniu zasobu z local storage

@@ -27,7 +27,5 @@ const searchMovies = () => {
     });
 };
 
-const button = document.getElementById('button');
-button.addEventListener('click', searchMovies);
 
 export { searchMovies };

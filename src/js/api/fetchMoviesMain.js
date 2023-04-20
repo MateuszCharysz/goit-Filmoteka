@@ -1,5 +1,4 @@
 import { createPaginationMain } from '../pagination';
-// import { scrollUp } from '../scrollUp';
 
 let pageValue = 1;
 
@@ -30,7 +29,6 @@ export const fetchMoviesMain = () => {
       mostPopularFilms.map(film => {
         let markup = `<p>TITLE:${film.title || film.name}</p>`;
         mainContainer.innerHTML += markup;
-        scrollUp();
       });
 
       // Update pagination
@@ -38,7 +36,7 @@ export const fetchMoviesMain = () => {
     })
     .catch(error => console.log(error));
 };
-console.log('scroll', scrollUp());
+
 //88************************ origin ************************
 
 // const fetchMoviesMain = pageValue => {

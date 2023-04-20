@@ -1,11 +1,8 @@
-import { createPaginationMain } from '../pagination';
-
-let pageValue = 1;
-
-export const fetchMoviesMain = () => {
+import { createPagination } from '../pagination';
+const fetchMoviesMain = (pageValue = 1) => {
   const data = fetch(
     'https://api.themoviedb.org/3/trending/all/day?api_key=4f9b3bc6cd1b3d6e0d830ad9a5ccfefd&' +
-      `page=${pageValue}`
+      `page=${pageValue}`,
   );
 
   data
@@ -13,49 +10,32 @@ export const fetchMoviesMain = () => {
       if (!response.ok) {
         console.log(
           'Error: Failed to fetch data from API. Status code:',
-          response.status
+          response.status,
         );
       } else {
         return response.json();
       }
     })
     .then(response => {
+      console.log(response);
       const mostPopularFilms = response.results;
-      console.log('most popular', mostPopularFilms);
-
-      const mainContainer = document.querySelector('#main');
-      mainContainer.innerHTML = '';
+      console.log(mostPopularFilms);
 
       mostPopularFilms.map(film => {
+        // zamist tego map trzeba wstawić tutaj render galerii
+
+        let mainContainer = document.querySelector('#main');
         let markup = `<p>TITLE:${film.title || film.name}</p>`;
         mainContainer.innerHTML += markup;
+        //paginacja
+        const pagination = createPagination(response);
+        pagination.on('beforeMove', ({ page }) => {
+          mainContainer.innerHTML = '';
+          fetchMoviesMain(page);
+        });
       });
-
-      // Update pagination
-      createPaginationMain(response);
     })
     .catch(error => console.log(error));
 };
-// // Initial fetch and render
-fetchMoviesMain();
 
-// fetchMoviesMain().then(films => {
-//     console.log(films)
-//     films.map(film => {
-
-//     })
-// })
-
-// const fetchMoviesMain = async () => {
-//     try {
-//     const data = await fetch("https://api.themoviedb.org/3/trending/all/day?api_key=4f9b3bc6cd1b3d6e0d830ad9a5ccfefd");
-
-//     const response = await data.json();
-//     const mostPopularFilms = response.results;
-
-//         return mostPopularFilms
-//     } catch (error) {
-//         console.log(error.message)
-//     }
-
-// }
+export { fetchMoviesMain };

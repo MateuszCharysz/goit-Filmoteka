@@ -1,4 +1,8 @@
 import { fetchMovies } from './api/fetchMovies';
+import { renderList } from './renderListMarkup';
+
+// Wyszukuje filmy po wpisaniu w wyszukiwarce
+
 const searchMovies = () => {
   const searchInput = document.getElementById('search');
   const searchValue = searchInput.value.trim();
@@ -7,6 +11,15 @@ const searchMovies = () => {
     .then(movies => {
       const markup = renderList(movies);
       document.getElementById('main').innerHTML = markup;
+
+      // wywołanie funkcji `openModal` z odpowiednimi argumentami po utworzeniu elementów z wynikami wyszukiwania.
+      const movieCards = document.querySelectorAll('.movie-card');
+      movieCards.forEach(movieCard => {
+        movieCard.addEventListener('click', () => {
+          // Pobierz dane filmu z atrybutów `data-*` klikniętego elementu `.movie-card`.
+          console.log(movieCard);
+        });
+      });
     })
     .catch(error => {
       console.error('Error:', error);
@@ -14,29 +27,5 @@ const searchMovies = () => {
     });
 };
 
-const button = document.getElementById('button');
-button.addEventListener('click', searchMovies);
-
-const renderList = movies => {
-  const markup = movies
-    .map(movie => {
-      const tags = movie.genres.map(genre => genre.name).join(', ');
-      return (
-        `<div class="movie-card">
-          <img
-            src="https://image.tmdb.org/t/p/w500/${movie.poster_path}"
-            alt="${tags}"
-            loading="lazy"
-          />
-          <div class="info">
-            <p class="movie__title">${movie.original_title}</p> <p class="movie__genres">${tags}</p>
-          </div>
-        </div>`
-      );
-    })
-    .join('');
-
-  return markup;
-};
 
 export { searchMovies };

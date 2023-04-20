@@ -34,19 +34,17 @@ export const fetchMoviesMain = () => {
       // Update pagination
       createPaginationMain(response);
     })
-.catch(error =>console.log(error))
-}
-
+    .catch(error => console.log(error));
+};
+// // Initial fetch and render
+fetchMoviesMain();
 
 // fetchMoviesMain().then(films => {
 //     console.log(films)
 //     films.map(film => {
-       
+
 //     })
 // })
-
-
-
 
 // const fetchMoviesMain = async () => {
 //     try {
@@ -54,13 +52,10 @@ export const fetchMoviesMain = () => {
 
 //     const response = await data.json();
 //     const mostPopularFilms = response.results;
-    
+
 //         return mostPopularFilms
 //     } catch (error) {
 //         console.log(error.message)
 //     }
 
 // }
-
-
-

@@ -14,7 +14,7 @@ const fetchMovieGenres = id => {
             response.status
           );
         }
-        return Promise.reject(new Error(response.status));
+        throw new Error(response.status);
       }
       return response.json();
     })
@@ -22,8 +22,7 @@ const fetchMovieGenres = id => {
       return data.genres;
     })
     .catch(error => {
-      console.error(error);
-      throw new Error(response.status);
+      throw new Error(error);
     });
 };
 

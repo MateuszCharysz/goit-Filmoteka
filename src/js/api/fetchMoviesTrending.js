@@ -22,19 +22,24 @@ const fetchMoviesTrending = () => {
       }
       return response.json();
     })
-   .then(async data => {
-      const movieData = await Promise.all(
+   .then(data => {
+      const movieData = Promise.all(
         data.results.map(async movie => {
-          const genres = await fetchMovieGenres(movie.id);
-          movie.genres = genres;
-          return movie;
+          try {
+            const genres = await fetchMovieGenres(movie.id);
+            movie.genres = genres;
+            return movie;
+          } catch (error) {
+            console.error(error);
+            movie.genres = '';
+            return movie;
+          }
         })
       );
       return movieData;
     })
     .catch(error => {
-      console.error(error);
-      throw new Error(response.status);
+      throw new Error(error);
     });
 };
 

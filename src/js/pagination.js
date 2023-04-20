@@ -1,52 +1,99 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
-const paginationContainer = document.querySelector('#pagination');
+// import { fetchMoviesMain } from './api/fetchMoviesMain';
+// import { updatingMovieHTML } from './help/renderGallery';
 
-// * funkcja musi zostać zaimportowana przy renderowaniu galerii i wyszukiwaniu przez słowa kluczowe * //
+let pageValue = 1;
+const itemsPerPage = 20;
+export const createPaginationMain = response => {
+  const totalCount = response.total_results;
+  const totalPageCount = Math.ceil(totalCount / itemsPerPage);
+  console.log('total count', totalCount);
+  if (totalPageCount > 1) {
+    const paginationContainer = document.querySelector('#pagination');
 
-const createPagination = (totalItems, visiblePages) => {
-  const options = {
-    totalItems: totalItems,
-    itemsPerPage: 20,
-    visiblePages: 5,
-  };
-  const pagination = new Pagination(paginationContainer, options);
+    const options = {
+      totalItems: totalCount,
+      itemsPerPage: itemsPerPage,
+      visiblePages: 5,
+      centerAlign: true,
+      page: pageValue,
+      firstItemClassName: 'tui-first-child',
+      lastItemClassName: 'tui-last-child',
+    };
 
-  return pagination;
+    const pagination = new Pagination(paginationContainer, options);
+
+    pagination.on('beforeMove', event => {
+      pageValue = event.page;
+      fetchMoviesMain();
+    });
+  }
 };
-console.log(createPagination(200, 5));
 
-export { createPagination };
+// JavaScript code
+// let pageValue = 1;
+// const itemsPerPage = 20;
 
-// rendering movie cards //
+// const fetchMoviesMain = () => {
+//   const data = fetch(
+//     'https://api.themoviedb.org/3/trending/all/day?api_key=4f9b3bc6cd1b3d6e0d830ad9a5ccfefd&' +
+//       `page=${pageValue}`
+//   );
 
-// import fetch get trending - na końcu musi być '&page=${page}' //
-// const pagination = createPagination(data.total_results, data.total_pages);
+//   data
+//     .then(response => {
+//       if (!response.ok) {
+//         console.log(
+//           'Error: Failed to fetch data from API. Status code:',
+//           response.status
+//         );
+//       } else {
+//         return response.json();
+//       }
+//     })
+//     .then(response => {
+//       const mostPopularFilms = response.results;
+//       console.log('most popular', mostPopularFilms);
 
-// KEY WORDS //
-//przy api keywords potrzebuje na końcu dodać '&page=${page}'
-// potrzebuje osobnej funkcji jak np.:
-// async function getByKeyword(name, page) {
-//     const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${name}&page=${page}`; //*/ name powinno być poza stałą API_URL
-//     return await axios
-//       .get(url)
-//       .then(response => {
-//         return response.data;
-//       })
-//       .catch(error => console.log(error));
-//   }
+//       const mainContainer = document.querySelector('#main');
+//       mainContainer.innerHTML = '';
 
-// const pagination = createPagination(data.total_results, data.total_pages);
-// pagination.on(({page //z fetch movies //
-// }) => {
-//     //query selector do galerii//
-//     .innerHTML = '';
-//     //funkcja obsługująca fetcha key words//
-//     (name, page.then(data => {
-//        //funkcja obsługująca fetcha key words//
-//        .innerHTML =
-//        //funkcja - markup galerii //(data.results);
-//     }))
-// })
-// to wszystko powinno się zawierać w funkcji, która szuka po słowie kluczowym //
+//       mostPopularFilms.map(film => {
+//         let markup = `<p>TITLE:${film.title || film.name}</p>`;
+//         mainContainer.innerHTML += markup;
+//       });
+
+//       // Update pagination
+//       const totalCount = response.total_results;
+//       const totalPageCount = Math.ceil(totalCount / itemsPerPage);
+//       console.log('total count', totalCount);
+//       if (totalPageCount > 1) {
+//         const paginationContainer = document.querySelector('#pagination');
+
+//         const options = {
+//           totalItems: totalCount,
+//           itemsPerPage: itemsPerPage,
+//           visiblePages: 5,
+//           centerAlign: true,
+//           page: pageValue,
+//           firstItemClassName: 'tui-first-child',
+//           lastItemClassName: 'tui-last-child',
+//         };
+
+//         const pagination = new Pagination(paginationContainer, options);
+
+//         pagination.on('beforeMove', event => {
+//           pageValue = event.page;
+//           fetchMoviesMain();
+//         });
+//       }
+//     })
+//     .catch(error => console.log(error));
+// };
+
+// // Initial fetch and render
+// fetchMoviesMain();
+
+// **********origin end ************************

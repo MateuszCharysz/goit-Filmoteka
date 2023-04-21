@@ -1,8 +1,8 @@
-import axios from 'axios';
+import '../../sass/main.scss';
 
 const movieBox = document.querySelector('.box');
 const loader = document.querySelector('.loader');
-const apiKey = '4f9b3bc6cd1b3d6e0d830ad9a5ccfefd';
+const apiKey = '64cb7e9375c055230d64b013c4bca79f';
 
 let movieID = [];
 let movieDetails = [];
@@ -11,11 +11,15 @@ async function fetchingMovies(page = 1) {
   const media_type = 'movie';
   const time_window = 'week';
   try {
-    const response = await axios.get(
+    const response = await fetch(
       `https://api.themoviedb.org/3/trending/${media_type}/${time_window}?api_key=${apiKey}&page=${page}`
     );
-    // console.log(response.data);
-    return response.data;
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    const moviesData = await response.json();
+    // console.log(moviesData);
+    return moviesData;
   } catch (error) {
     console.log(error);
   }
@@ -30,14 +34,18 @@ function renderMovieList(moviesData) {
 
 async function fetchingMovieDetails() {
   for (let id of movieID) {
-    await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(response.status);
-        }
-        return response.json();
-      })
-      .then(data => movieDetails.push(data));
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`
+      );
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      const movieData = await response.json();
+      movieDetails.push(movieData);
+    } catch (error) {
+      console.log(error);
+    }
   }
   // console.log(movieDetails);
 }
@@ -73,12 +81,12 @@ async function updatingMovieHTML() {
   movieBox.innerHTML += myHTML;
 }
 
-// export async function showMovies() {
-//   // const moviesData = await fetchingMovies();
-//   renderMovieList(moviesData);
-//   const movieID = await fetchingMovieDetails();
-//   loader.classList.add('loader--visibility');
-//   updatingMovieHTML(movieID);
-// }
+async function showMovies() {
+  const moviesData = await fetchingMovies();
+  renderMovieList(moviesData);
+  await fetchingMovieDetails();
+  loader.classList.add('loader--visibility');
+  await updatingMovieHTML();
+}
 
-// window.addEventListener('load', showMovies);
+window.addEventListener('load', showMovies);

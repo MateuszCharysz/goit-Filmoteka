@@ -4,7 +4,6 @@ const movieBox = document.querySelector('.box');
 const loader = document.querySelector('.loader');
 const apiKey = '4f9b3bc6cd1b3d6e0d830ad9a5ccfefd';
 
-
 let movieID = [];
 let movieDetails = [];
 
@@ -83,6 +82,3 @@ async function updatingMovieHTML() {
 // }
 
 // window.addEventListener('load', showMovies);
-
-
-

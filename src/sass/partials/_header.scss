@@ -4,7 +4,7 @@
   align-items: center;
   height: 216px;
   background-image: url('../images/header/header-background-mobile@1x.jpg');
-  background-size: cover;
+  background-size: 100% 216px;
   background-repeat: no-repeat;
   background-position: center center;
   padding: 40px 20px;
@@ -49,7 +49,8 @@
     text-transform: uppercase;
     display: flex;
     gap: 40px;
-    color: $white;
+    color: #fff;
+    border-color: #fff;
   }
   &__search {
     width: 320px;
@@ -130,6 +131,7 @@
 
 .library-buttons {
   display: flex;
+  gap: 16px;
   justify-content: center;
 }
 
@@ -137,6 +139,7 @@
   background-color: transparent;
   border-color: #ffffff;
   color: #ffffff;
+  border-radius: 5px;
 
   padding-top: 14px;
   padding-right: 36px;
@@ -148,13 +151,13 @@
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  display: flex;
   align-items: center;
   text-align: center;
   text-transform: uppercase;
 
   &:hover {
     background-color: #ff6b01;
+    border-color: #ff6b01;
   }
 }
 
@@ -165,4 +168,19 @@ a:link {
 
 a:visited {
   color: #ffffff;
+}
+
+.header__button--active {
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    display: block;
+    top: 100px;
+    color: red;
+  }
 }

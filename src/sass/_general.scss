@@ -57,3 +57,7 @@ body {
 .flex {
   display: flex;
 }
+
+::placeholder {
+  color: #fff;
+}

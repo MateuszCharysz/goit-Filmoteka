@@ -9,6 +9,8 @@ import jsLocalStorage from './jsLocalStorage';
 //2. robimy operacje na danych (mutujące array)
 //3. zapisujemy otrzymany array w local storage
 
+const cbfindId = (movieId, arrayType) => arrayType.includes(movieId); // funkcja cb - do sprawdzania id wewnątrz funkcji
+
 // funkcja wywoływana przy uruchomieniu strony tworząca puste katalogi id
 const createLocalStorage = () => {}; // ma do zrobienia stworzenie key=watched,queued // watched=[], queued=[] (format danych to array)
 // musi też sprawdzić czy zmienne stnieją, żeby ich nie nadpisać
@@ -16,7 +18,13 @@ const createLocalStorage = () => {}; // ma do zrobienia stworzenie key=watched,q
 //argument arrayType - key który ma być użyty przy ładowaniu zasobu z local storage
 
 // funkcja wywoływana przy klikaniu na przyciski w modal (watched albo queued)
-const saveMovieId = (movieId, arrayType) => {}; // DOPISUJE do istniejącego array [] movieId
+const saveMovieId = (movieId, arrayType) => {
+  const arr = jsLocalStorage.load(arrayType);
+  if (cbfindId(movieId, arr) !== true) {
+    arr.push(movieId);
+    jsLocalStorage.save(arr);
+  }
+}; // DOPISUJE do istniejącego array [] movieId
 // musi sprawdzić czy id już istnieje, jeśli istnieje to przerywa działanie funkcji
 // jeśli nie istnieje to robi push..
 
@@ -25,6 +33,7 @@ const removeMovieId = (movieId, arrayType) => {}; // Jeśli znajdzie, wtedy usuw
 
 // funkcja wywoływana przy ładowaniu modala, oraz przy kliknięciu na przycisk (po dodaniu do localstorage)
 // w połączeniu z funkcją togglująca klasę w modalu (nie ma jeszcze takiej) służyłaby do zmiany koloru przycisku (jeśli mamy coś - przycisk pomarańczowy, jeśli nie przeźroczysty)
+
 const findMovieId = (movieId, arrayType) => {}; // funkcja która tylko i wyłącznie znajduje movie ID i zwraca true albo false
 
 const localStorageMod = {

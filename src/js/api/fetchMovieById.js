@@ -1,6 +1,6 @@
-const fetchMovieGenres = id => {
+const fetchMovieById = id => {
   const API_KEY = '64cb7e9375c055230d64b013c4bca79f';
-  const API_URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
+  const API_URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
 
   return fetch(API_URL)
     .then(response => {
@@ -18,12 +18,8 @@ const fetchMovieGenres = id => {
       }
       return response.json();
     })
-    .then(data => {
-      return data.genres;
-    })
     .catch(error => {
-      throw new Error(error);
+      throw new Error(error)
     });
 };
-
-export { fetchMovieGenres };
+export { fetchMovieById };

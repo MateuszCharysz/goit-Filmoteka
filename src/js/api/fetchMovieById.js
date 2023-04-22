@@ -1,6 +1,3 @@
-'use strict';
-
-// funkcja pobierająca dane o filmie po id
 const fetchMovieById = id => {
   const API_KEY = '64cb7e9375c055230d64b013c4bca79f';
   const API_URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
@@ -17,15 +14,12 @@ const fetchMovieById = id => {
             response.status
           );
         }
-        return Promise.reject(new Error(response.status));
+        throw new Error(response.status);
       }
       return response.json();
     })
     .catch(error => {
-      console.error(error);
-      return Promise.reject(
-        new Error('An error occurred while fetching the data.')
-      );
+      throw new Error(error)
     });
 };
 export { fetchMovieById };

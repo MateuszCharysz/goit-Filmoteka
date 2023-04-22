@@ -9,9 +9,12 @@ const fetchMovieGenres = id => {
           // Too Many Requests
           console.error('Error: Too many requests to API.');
         } else {
-          console.error('Error: Failed to fetch data from API. Status code:', response.status);
+          console.error(
+            'Error: Failed to fetch data from API. Status code:',
+            response.status
+          );
         }
-        return Promise.reject(new Error(response.status));
+        throw new Error(response.status);
       }
       return response.json();
     })
@@ -19,8 +22,7 @@ const fetchMovieGenres = id => {
       return data.genres;
     })
     .catch(error => {
-      console.error(error);
-      return Promise.reject(new Error('An error occurred while fetching the data.'));
+      throw new Error(error);
     });
 };
 

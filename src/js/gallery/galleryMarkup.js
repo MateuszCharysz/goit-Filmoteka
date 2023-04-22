@@ -6,7 +6,7 @@ export const updatingMovieHTML = () => {
   movieDetails.forEach(movie => {
     genre = movie.genres.map(genre => ` ${genre.name}`);
     yearOfProduction = movie.release_date.substring(0, 4);
-    myHTML += `<div class="movie__card" >
+    myHTML += `<div class="movie__card" data-id="${movie.id}">
       <div class="movie__imgbox">
         <img class="movie__img" src="https://image.tmdb.org/t/p/w500${
           movie.poster_path

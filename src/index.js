@@ -1,19 +1,21 @@
-import { fetchMoviesTrending } from './js/api/fetchMoviesTrending'; // fetch podłączony z renderList
 import { searchMovies } from './js/searchMovies';
-import { fetchMoviesMain } from './js/api/fetchMoviesMain';
 import './sass/main.scss';
 import { openModal } from './js/modal/openModal';
-import { fetchMovies } from './js/api/fetchMovies';
-import { renderGallery } from './js/gallery/renderGalleryMain';
 import showMovies from './js/gallery/renderGalleryMain';
+import { movieBox } from './js/gallery/renderGalleryMain';
+import debounce from 'lodash.debounce';
+import { searchMov } from './js/searchMov';
+
 //renderGallery => fetchingMovies => fetchingMovieDetails => galleryMarkup => pagination
 showMovies();
-fetchMovies();
 
-const mainContent = document.querySelector('#main');
+const DEBOUNCE_DELAY = 300
+
 // openModal => fetchMovieById => modalMarkup
-mainContent.addEventListener('click', openModal);
+movieBox.addEventListener('click', openModal);
 
 const button = document.getElementById('button');
 // searchMovies => fetchMovies => renderListMarkup
 button.addEventListener('click', searchMovies);
+
+button.addEventListener(('input', debounce((searchMov), DEBOUNCE_DELAY)))

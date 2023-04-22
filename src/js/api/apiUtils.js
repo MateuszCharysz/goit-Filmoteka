@@ -12,9 +12,9 @@ const API_SEARCH = (name = '', pageValue = 1) =>
 const API_KEY = '64cb7e9375c055230d64b013c4bca79f';
 const API_TRENDING = (pageValue = 1) =>
   `trending/all/day?api_key=${API_KEY}&page=${pageValue}`;
+const API_ID = id => `movie/${id}?api_key=${API_KEY}`;
 
-const apiUrlStringBuilder = typeOfQuerry =>
-  `${API_MAIN_URL}${typeOfQuerry}`;
+const apiUrlStringBuilder = typeOfQuerry => `${API_MAIN_URL}${typeOfQuerry}`;
 
 const apiUtils = {
   httpCodeHandler,
@@ -22,11 +22,14 @@ const apiUtils = {
   API_MAIN_URL,
   API_SEARCH,
   API_TRENDING,
+  API_ID,
   apiUrlStringBuilder,
 };
-// export default apiUtils;
+export default apiUtils;
 //przykład użycia
 // console.log(apiUrlStringBuilder(API_TRENDING()));
 // console.log(apiUrlStringBuilder(API_TRENDING(3)));
 // console.log(apiUrlStringBuilder(API_SEARCH('dog')));
 // console.log(apiUrlStringBuilder(API_SEARCH('girl', 4)));
+
+// w innym mogule apiUtils.apiUrlStringBuilder(apiUtils.(API_SEARCH('girl', 4))

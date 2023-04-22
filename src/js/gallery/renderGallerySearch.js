@@ -3,12 +3,8 @@ import { fetchingMoviesSearch } from './fetchingMoviesSearch';
 import { fetchingMovieDetails } from './fetchingMovieDetails';
 import { updatingMovieHTML } from './galleryMarkup';
 import { createPagination } from '../pagination';
-
-export const movieBox = document.querySelector('.box');
-const loader = document.querySelector('.loader');
-
-export let movieID = [];
-export let movieDetails = [];
+import { movieID, cbClear } from './galleryVariables';
+import { loader } from './galleryVariables';
 
 const renderMovieList = moviesData => {
   moviesData.results.forEach(movie => {
@@ -26,23 +22,9 @@ const showMoviesKeyWords = async (page, search) => {
   console.log('movies data', moviesData);
   const pagination = createPagination(moviesData);
   pagination.on('beforeMove', ({ page }) => {
-    movieID = [];
-    movieDetails = [];
-    movieBox.innerHTML = '';
+    cbClear();
     showMoviesKeyWords(page, search);
   });
 };
-const button = document.getElementById('button');
-const searchInput = document.getElementById('search');
-
-button.addEventListener('click', event => {
-  event.preventDefault();
-  movieID = [];
-  movieDetails = [];
-  movieBox.innerHTML = '';
-  showMoviesKeyWords(1, searchInput.value);
-});
-
-// showMoviesKeyWords(1, 'dog');
 
 export default showMoviesKeyWords;

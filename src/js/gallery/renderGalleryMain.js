@@ -3,12 +3,12 @@ import { fetchingMovies } from './fetchingMovies';
 import { fetchingMovieDetails } from './fetchingMovieDetails';
 import { updatingMovieHTML } from './galleryMarkup';
 import { createPagination } from '../pagination';
+import { movieID, movieDetails, cbClear } from './galleryVariables';
+import { movieBox, loader } from './galleryVariables';
 
-export const movieBox = document.querySelector('.box');
-const loader = document.querySelector('.loader');
 
-export let movieID = [];
-export let movieDetails = [];
+// export let movieID = [];
+// export let movieDetails = [];
 
 const renderMovieList = moviesData => {
   moviesData.results.forEach(movie => {
@@ -26,9 +26,7 @@ const showMovies = async page => {
   console.log(moviesData);
   const pagination = createPagination(moviesData);
   pagination.on('beforeMove', ({ page }) => {
-    movieID = [];
-    movieDetails = [];
-    movieBox.innerHTML = '';
+    cbClear();
     showMovies(page);
   });
 };

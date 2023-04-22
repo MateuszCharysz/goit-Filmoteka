@@ -1,21 +1,27 @@
-import { searchMovies } from './js/searchMovies';
+
 import './sass/main.scss';
 import { openModal } from './js/modal/openModal';
 import showMovies from './js/gallery/renderGalleryMain';
 import showMoviesKeyWords from './js/gallery/renderGallerySearch';
-import { movieBox } from './js/gallery/renderGalleryMain';
+import { movieBox, cbClear } from './js/gallery/galleryVariables';
 import debounce from 'lodash.debounce';
-import { searchMov } from './js/searchMov';
 
 //renderGallery => fetchingMovies => fetchingMovieDetails => galleryMarkup => pagination
 showMovies();
-// fetchMovies();
+
+const button = document.getElementById('button');
+const searchInput = document.getElementById('search');
+// renderGallerySearch => fetchingMoviesSearch => fetchingMovieDetails => galleryMarkup => pagination
+
+button.addEventListener('click', event => {
+  event.preventDefault();
+  cbClear();
+  showMoviesKeyWords(1, searchInput.value);
+});
+// button.addEventListener('click', showMoviesKeyWords);
+// searchInput.addEventListener(
+//   ('input', debounce(showMoviesKeyWords(1, searchInput.value), 300)),
+// );
 
 // openModal => fetchMovieById => modalMarkup
 movieBox.addEventListener('click', openModal);
-
-const button = document.getElementById('button');
-// searchMovies => fetchMovies => renderListMarkup
-// button.addEventListener('click', searchMovies);
-
-// button.addEventListener(('input', debounce(searchMov, 300)));

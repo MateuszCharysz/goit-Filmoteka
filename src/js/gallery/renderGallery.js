@@ -17,16 +17,19 @@ const renderMovieList = moviesData => {
   return movieID;
 };
 
-const showMovies = async () => {
-  const moviesData = await fetchingMovies();
+const showMovies = async page => {
+  const moviesData = await fetchingMovies(page);
   renderMovieList(moviesData);
   await fetchingMovieDetails();
   loader.classList.add('loader--visibility');
   updatingMovieHTML();
+  console.log(moviesData);
   const pagination = createPagination(moviesData);
-  pagination.on('beforeMove', () => {
+  pagination.on('beforeMove', ({ page }) => {
+    movieID = [];
+    movieDetails = [];
     movieBox.innerHTML = '';
-    showMovies();
+    showMovies(page);
   });
 };
 

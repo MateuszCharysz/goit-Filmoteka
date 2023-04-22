@@ -62,11 +62,13 @@ const toLocalButton = (button, id, arrayType, isSaved) => {
   button.addEventListener('click', () => {
     if (localStorageMod.findMovieId(id, arrayType)) {
       localStorageMod.removeMovieId(id, arrayType);
+      button.classList.remove('is-save');
     } else {
       localStorageMod.saveMovieId(id, arrayType);
+      button.classList.add('is-save');
     }
     // przekazanie wartości true lub false jako drugi argument do metody toggle
-    button.classList.toggle('is-save', !isSaved);
+    // button.classList.toggle('is-save', !isSaved);
   });
 };
 

@@ -43,12 +43,12 @@ const fetchMoviesTrending = () => {
     });
 };
 
-fetchMoviesTrending()
-  .then(movies => {
-    const markup = renderList(movies);
-    document.getElementById('main').innerHTML = markup;
-  })
-  .catch(error => {
-    console.error(error);
-  });
+// fetchMoviesTrending()
+//   .then(movies => {
+//     const markup = renderList(movies);
+//     document.getElementById('main').innerHTML = markup;
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
 export { fetchMoviesTrending };

@@ -4,8 +4,10 @@ import { fetchMoviesMain } from './js/api/fetchMoviesMain';
 import './sass/main.scss';
 import { openModal } from './js/modal/openModal';
 import { fetchMovies } from './js/api/fetchMovies';
-// import { renderGallery } from './js/help/renderGallery';
-fetchMoviesMain();
+import { renderGallery } from './js/gallery/renderGalleryMain';
+import showMovies from './js/gallery/renderGalleryMain';
+//renderGallery => fetchingMovies => fetchingMovieDetails => galleryMarkup => pagination
+showMovies();
 fetchMovies();
 
 const mainContent = document.querySelector('#main');

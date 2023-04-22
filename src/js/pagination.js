@@ -8,7 +8,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 
 export const createPagination = ({
   // destrukturyzacja danych z obiektu consol.log(results) z fetchMoviesMain
-  total_results,
+  total_result = 0,
   total_pages,
   page = 1,
 }) => {

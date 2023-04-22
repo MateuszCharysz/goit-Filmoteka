@@ -1,7 +1,8 @@
 import { fetchMovieGenres } from './fetchMovieGenres';
-const fetchMovies = name => {
+
+const fetchMovies = (name, page = 1) => {
   const API_KEY = '64cb7e9375c055230d64b013c4bca79f';
-  const API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${name}&page=1&include_adult=false`;
+  const API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${name}&page=${page}&include_adult=false`;
 
   return fetch(API_URL)
     .then(response => {
@@ -12,15 +13,16 @@ const fetchMovies = name => {
         } else {
           console.error(
             'Error: Failed to fetch data from API. Status code:',
-            response.status,
+            response.status
           );
         }
-        throw new Error(response.status);;
+        return Promise.reject(new Error(response.status));
       }
       return response.json();
     })
     .then(data => {
       const movieIds = data.results.map(movie => movie.id);
+      console.log('movie ids:', movieIds);
       const promises = movieIds.map(id => fetchMovieGenres(id));
       return Promise.all(promises).then(genres => {
         return data.results.map((movie, index) => ({
@@ -31,8 +33,9 @@ const fetchMovies = name => {
     })
     .catch(error => {
       console.error(error);
-      throw new Error('An error occurred while fetching the data.');
-
+      return Promise.reject(
+        new Error('An error occurred while fetching the data.')
+      );
     });
 };
 export { fetchMovies };

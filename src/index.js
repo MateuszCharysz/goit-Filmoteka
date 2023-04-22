@@ -3,9 +3,10 @@ import { searchMovies } from './js/searchMovies';
 import { fetchMoviesMain } from './js/api/fetchMoviesMain';
 import './sass/main.scss';
 import { openModal } from './js/modal/openModal';
-import { createPaginationMain } from './js/pagination';
+import { fetchMovies } from './js/api/fetchMovies';
 // import { renderGallery } from './js/help/renderGallery';
 fetchMoviesMain();
+fetchMovies();
 
 const mainContent = document.querySelector('#main');
 // openModal => fetchMovieById => modalMarkup

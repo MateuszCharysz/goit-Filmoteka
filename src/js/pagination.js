@@ -17,7 +17,7 @@ export const createPagination = ({
 
     const options = {
       totalItems: total_results,
-      itemsPerPage: total_pages,
+      itemsPerPage: 20,
       visiblePages: 5,
       centerAlign: true,
       page: page,

@@ -1,4 +1,3 @@
-// usuwa możliwość skrolowania
 .overflow-off {
   position: fixed;
   width: 100%;
@@ -7,46 +6,55 @@
 }
 .backdrop {
   position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   top: 0;
-  background: rgba(0, 0, 0, 0.25);
-  width: 100%;
-  height: 100%;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
 }
 .modal {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative;
-  height: calc(100% - 20px);
+  margin: 20px auto;
+  background-color: #fff;
+  font: 500 12px/1.33333 Roboto, sans-serif;
+  color: #000;
+  max-height: calc(100vh - 40px);
   width: 280px;
-  background: $white;
-  padding: 48px 20px;
+  padding: 48px 20px 41px;
+  border-radius: 5px;
+  overflow-x: auto;
+  scrollbar-width: none; /* ukrycie paska przewijania w Chrome, Firefox */
+  -ms-overflow-style: none; /* ukrycie paska przewijania w Edge */
 
+  &::-webkit-scrollbar {
+    display: none; /* ukrycie paska przewijania w Safari i Chrome */
+  }
   @include tablet {
-    flex-direction: row;
+    display: flex;
     width: 704px;
-    height: 552px;
     padding: 40px 72px 40px 36px;
     gap: 68px;
   }
-
   @include desktop {
-    flex-direction: row;
+    display: flex;
     width: 806px;
-    height: 558px;
     padding: 40px 12px;
     gap: 16px;
   }
+
   &__title {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
+    font: 500 20px/23px Roboto;
+    margin-top: 20px;
+    @include tablet {
+      margin-top: 0;
+    }
+    @include desktop {
+      font-size: 30px;
+      line-height: 35px;
+      margin-top: 0;
+    }
   }
   &__img {
     margin-right: auto;
@@ -58,6 +66,7 @@
       width: 264px;
       height: 373.55px;
     }
+
     @include desktop {
       width: 375px;
       height: 478px;
@@ -70,74 +79,67 @@
   }
   &__item {
     display: inline-flex;
-    &--label {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 16px;
-      width: 100px;
-    }
+
+    &--label,
     &--value {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 16px;
+      font: 500 12px/16px Roboto;
+    }
+
+    &--label {
+      min-width: 108px;
+      color: #8c8c8c;
+    }
+
+    &--value {
       &--vote {
         color: #8c8c8c;
-      }
-      &--vote vote_average {
-        width: 36px;
-        height: 16px;
-        border-radius: 5px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center; /* wyśrodkowanie tekstu wewnątrz elementu */
-        color: white; /* zmiana koloru tekstu na biały */
-        font-size: 12px; /* dopasowanie rozmiaru tekstu */
-        line-height: 14px; /* dopasowanie wysokości tekstu do wysokości elementu */
-        background: #ff6b01;
-        margin-right: 1px;
-      }
-      &--vote vote__count {
-        width: 36px;
-        height: 16px;
-        border-radius: 5px;
-        display: inline-flex;
-        color: #000000;
-        align-items: center;
-        justify-content: center;
-        text-align: center; /* wyśrodkowanie tekstu wewnątrz elementu */
-        font-size: 12px; /* dopasowanie rozmiaru tekstu */
-        line-height: 14px; /* dopasowanie wysokości tekstu do wysokości elementu */
-        background: #f7f7f7;
-        margin-left: 1px;
+
+        & vote_average,
+        & vote__count {
+          width: 36px;
+          height: 16px;
+          border-radius: 5px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          font-size: 12px;
+          line-height: 14px;
+        }
+
+        & vote_average {
+          background: #ff6b01;
+          margin-right: 1px;
+          color: white;
+        }
+
+        & vote__count {
+          background: #f7f7f7;
+          margin-left: 1px;
+          color: #000000;
+        }
       }
     }
   }
   &__overview {
     &--about {
       margin-bottom: 8px;
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 500;
       font-size: 12px;
+      font-weight: 500;
       line-height: 16px;
     }
     &--overview {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 20px;
+      line-height: 1.67;
     }
   }
   &__buttons {
     margin-top: auto;
     display: inline-flex;
     justify-content: space-between;
+    @include tablet {
+      justify-content: flex-start;
+      gap: 15px;
+    }
     @include desktop {
       margin: 0 0 0 8px;
       justify-content: flex-start;
@@ -149,13 +151,17 @@
     height: 44px;
     border-radius: 5px;
     cursor: pointer;
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 500;
-    font-size: 12px;
     line-height: 16px;
     background-color: transparent;
     text-transform: uppercase;
+    border: 1px solid #000000;
+    &:hover {
+      border: none;
+      color: $white;
+      background-color: #ff6b01;
+      transition: background-color 0.2s ease-in-out;
+    }
     @include tablet {
       width: 125.03px;
     }
@@ -164,9 +170,7 @@
     }
     &--watched {
       padding: 0 25px;
-      background-color: #ff6b01;
-      color: $white;
-      border: none;
+
       @include tablet {
         padding: 0;
       }
@@ -181,10 +185,13 @@
       height: 30px;
       right: 8px;
       border: none;
+      background-image: url('../images/svg/close.svg');
+      &:hover {
+        background-color: transparent;
+      }
     }
   }
   &__content {
-    height: 100%;
     width: 100%;
     gap: 20px;
     display: flex;
@@ -192,9 +199,9 @@
     position: relative;
   }
 }
-.grey {
-  color: #8c8c8c;
-}
 .big {
   text-transform: uppercase;
+}
+#close{
+  
 }

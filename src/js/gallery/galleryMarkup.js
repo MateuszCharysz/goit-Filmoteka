@@ -1,4 +1,4 @@
-import { movieDetails, movieBox } from './renderGallery';
+import { movieDetails, movieBox } from './renderGalleryMain';
 export const updatingMovieHTML = () => {
   let myHTML = '';
   let genre;

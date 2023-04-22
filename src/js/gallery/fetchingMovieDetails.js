@@ -1,4 +1,4 @@
-import { movieID, movieDetails } from './renderGallery';
+import { movieID, movieDetails } from './renderGalleryMain';
 import apiUtils from '../api/apiUtils';
 
 export const fetchingMovieDetails = async () => {

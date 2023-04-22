@@ -1,19 +1,27 @@
-import { fetchMoviesTrending } from './js/api/fetchMoviesTrending'; // fetch podłączony z renderList
-import { searchMovies } from './js/searchMovies';
-import { fetchMoviesMain } from './js/api/fetchMoviesMain';
+
 import './sass/main.scss';
 import { openModal } from './js/modal/openModal';
-import { createPaginationMain } from './js/pagination';
-import { renderGallery } from './js/gallery/renderGalleryMain';
 import showMovies from './js/gallery/renderGalleryMain';
-import { movieBox } from './js/gallery/renderGalleryMain';
+import showMoviesKeyWords from './js/gallery/renderGallerySearch';
+import { movieBox, cbClear } from './js/gallery/galleryVariables';
+import debounce from 'lodash.debounce';
+
 //renderGallery => fetchingMovies => fetchingMovieDetails => galleryMarkup => pagination
 showMovies();
 
-const mainContent = document.querySelector('#main');
+const button = document.getElementById('button');
+const searchInput = document.getElementById('search');
+// renderGallerySearch => fetchingMoviesSearch => fetchingMovieDetails => galleryMarkup => pagination
+
+button.addEventListener('click', event => {
+  event.preventDefault();
+  cbClear();
+  showMoviesKeyWords(1, searchInput.value);
+});
+// button.addEventListener('click', showMoviesKeyWords);
+// searchInput.addEventListener(
+//   ('input', debounce(showMoviesKeyWords(1, searchInput.value), 300)),
+// );
+
 // openModal => fetchMovieById => modalMarkup
 movieBox.addEventListener('click', openModal);
-
-const button = document.getElementById('button');
-// searchMovies => fetchMovies => renderListMarkup
-button.addEventListener('click', searchMovies);

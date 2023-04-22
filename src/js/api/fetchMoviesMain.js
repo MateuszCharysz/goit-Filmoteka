@@ -1,8 +1,10 @@
 import { createPagination } from '../pagination';
+import { scrollUp } from '../scrollUp';
+
 const fetchMoviesMain = (pageValue = 1) => {
   const data = fetch(
     'https://api.themoviedb.org/3/trending/all/day?api_key=4f9b3bc6cd1b3d6e0d830ad9a5ccfefd&' +
-      `page=${pageValue}`,
+      `page=${pageValue}`
   );
 
   data
@@ -10,14 +12,14 @@ const fetchMoviesMain = (pageValue = 1) => {
       if (!response.ok) {
         console.log(
           'Error: Failed to fetch data from API. Status code:',
-          response.status,
+          response.status
         );
       } else {
         return response.json();
       }
     })
     .then(response => {
-      console.log(response);
+      console.log('response', response);
       const mostPopularFilms = response.results;
       console.log(mostPopularFilms);
 
@@ -32,6 +34,7 @@ const fetchMoviesMain = (pageValue = 1) => {
         pagination.on('beforeMove', ({ page }) => {
           mainContainer.innerHTML = '';
           fetchMoviesMain(page);
+          scrollUp();
         });
       });
     })

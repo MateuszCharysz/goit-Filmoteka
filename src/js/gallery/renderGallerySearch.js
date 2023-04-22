@@ -1,14 +1,10 @@
 import '../../sass/main.scss';
-import { fetchingMovies } from './fetchingMovies';
+import { fetchingMoviesSearch } from './fetchingMoviesSearch';
 import { fetchingMovieDetails } from './fetchingMovieDetails';
 import { updatingMovieHTML } from './galleryMarkup';
 import { createPagination } from '../pagination';
-import { movieID, movieDetails, cbClear } from './galleryVariables';
-import { movieBox, loader } from './galleryVariables';
-
-
-// export let movieID = [];
-// export let movieDetails = [];
+import { movieID, cbClear } from './galleryVariables';
+import { loader } from './galleryVariables';
 
 const renderMovieList = moviesData => {
   moviesData.results.forEach(movie => {
@@ -17,18 +13,18 @@ const renderMovieList = moviesData => {
   return movieID;
 };
 
-const showMovies = async page => {
-  const moviesData = await fetchingMovies(page);
+const showMoviesKeyWords = async (page, search) => {
+  const moviesData = await fetchingMoviesSearch(page, search);
   renderMovieList(moviesData);
   await fetchingMovieDetails();
   loader.classList.add('loader--visibility');
   updatingMovieHTML();
-  console.log(moviesData);
+  console.log('movies data', moviesData);
   const pagination = createPagination(moviesData);
   pagination.on('beforeMove', ({ page }) => {
     cbClear();
-    showMovies(page);
+    showMoviesKeyWords(page, search);
   });
 };
 
-export default showMovies;
+export default showMoviesKeyWords;

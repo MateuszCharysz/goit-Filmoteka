@@ -2,7 +2,6 @@ import { searchMovies } from './js/searchMovies';
 import './sass/main.scss';
 import { openModal } from './js/modal/openModal';
 import showMovies from './js/gallery/renderGalleryMain';
-<<<<<<< HEAD
 import showMoviesKeyWords from './js/gallery/renderGallerySearch';
 import { movieBox } from './js/gallery/renderGalleryMain';
 import debounce from 'lodash.debounce';
@@ -19,4 +18,4 @@ const button = document.getElementById('button');
 // searchMovies => fetchMovies => renderListMarkup
 button.addEventListener('click', searchMovies);
 
-button.addEventListener(('input', debounce((searchMov), DEBOUNCE_DELAY)))
+button.addEventListener(('input', debounce(searchMov, DEBOUNCE_DELAY)));

@@ -18,8 +18,7 @@ const renderMovieList = moviesData => {
 };
 
 const showMoviesKeyWords = async (page, search) => {
- 
-  const moviesData = await fetchingMoviesSearch(search, null, page);
+  const moviesData = await fetchingMoviesSearch(page, search);
   renderMovieList(moviesData);
   await fetchingMovieDetails();
   loader.classList.add('loader--visibility');
@@ -33,10 +32,10 @@ const showMoviesKeyWords = async (page, search) => {
     showMoviesKeyWords(page, search);
   });
 };
-const searchForm = document.querySelector('#search');
-const searchInput = document.querySelector('#search-input');
+const button = document.getElementById('button');
+const searchInput = document.getElementById('search');
 
-searchForm.addEventListener('submit', event => {
+button.addEventListener('click', event => {
   event.preventDefault();
   movieID = [];
   movieDetails = [];
@@ -44,6 +43,6 @@ searchForm.addEventListener('submit', event => {
   showMoviesKeyWords(1, searchInput.value);
 });
 
-showMoviesKeyWords(1, '');
+// showMoviesKeyWords(1, 'dog');
 
 export default showMoviesKeyWords;

@@ -9,13 +9,13 @@ import { searchMov } from './js/searchMov';
 
 //renderGallery => fetchingMovies => fetchingMovieDetails => galleryMarkup => pagination
 showMovies();
-fetchMovies();
+// fetchMovies();
 
 // openModal => fetchMovieById => modalMarkup
 movieBox.addEventListener('click', openModal);
 
 const button = document.getElementById('button');
 // searchMovies => fetchMovies => renderListMarkup
-button.addEventListener('click', searchMovies);
+// button.addEventListener('click', searchMovies);
 
-button.addEventListener(('input', debounce(searchMov, DEBOUNCE_DELAY)));
+// button.addEventListener(('input', debounce(searchMov, 300)));

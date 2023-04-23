@@ -3,14 +3,14 @@ import { fetchingMoviesSearch } from './fetchingMoviesSearch';
 import { fetchingMovieDetails } from './fetchingMovieDetails';
 import { updatingMovieHTML } from './galleryMarkup';
 import { createPagination } from '../pagination';
-import { movieID, cbClear } from './galleryVariables';
+import { movieId, cbClear } from './galleryVariables';
 import { loader } from './galleryVariables';
 
 const renderMovieList = moviesData => {
   moviesData.results.forEach(movie => {
-    movieID.push(movie.id);
+    movieId.push(movie.id);
   });
-  return movieID;
+  return movieId;
 };
 
 const showMoviesKeyWords = async (page, search) => {

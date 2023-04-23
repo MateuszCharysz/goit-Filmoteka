@@ -4,8 +4,10 @@ const renderModal = e => {
     <div class='modal'>
         <button class='modal__button modal__button--close' id='modal__close'>
         </button>
-        <img class="modal__img" src="https://image.tmdb.org/t/p/w500//${
+        <img class="modal__img" src="${
           e.poster_path
+            ? `https://image.tmdb.org/t/p/w500${e.poster_path}`
+            : 'https://movienewsletters.net/photos/000000h1.jpg'
         }" />
         <div class="modal__content">
             <h2 class="modal__title">${e.original_title}</h2>

@@ -1,8 +1,8 @@
-import { movieID, movieDetails } from './galleryVariables';
+import { movieId, movieDetails } from './galleryVariables';
 import apiUtils from '../api/apiUtils';
 
 export const fetchingMovieDetails = async () => {
-  for (let id of movieID) {
+  for (let id of movieId) {
     try {
       const response = await fetch(
         apiUtils.apiUrlStringBuilder(apiUtils.API_ID(id)),

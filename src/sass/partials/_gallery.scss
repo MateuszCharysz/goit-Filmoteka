@@ -7,7 +7,7 @@
   align-items: center;
   gap: 20px;
   margin: 0 auto;
-  padding: 15px;
+  padding: 20px;
   background-color: white;
 }
 .movie__card {
@@ -54,12 +54,15 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 30px;
-    padding: 84px;
+    padding: 60px;
   }
 }
 /***************** DESKTOP *****************/
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .box {
     padding: 57px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

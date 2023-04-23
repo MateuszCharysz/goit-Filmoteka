@@ -1,5 +1,5 @@
-import { fetchMovieById } from '../api/fetchMovieById';
-import { movieBox, movieID } from '../gallery/galleryVariables';
+import { fetchMovieById } from './fetchMovieById';
+import { movieBox, movieId } from '../gallery/galleryVariables';
 import localStorageMod from '../localStorage/localStorageMod';
 import { movieCard } from '../localStorage/movieCard';
 import { closeModal } from './closeModal';
@@ -21,13 +21,13 @@ const openModal = e => {
   backdrop.classList.add('backdrop');
 
   // pobranie id filmu z atrybutu "data-id" klikniętego elementu
-  const movieId = e.target.closest('.movie__card').getAttribute('data-id');
+  const movieIdCard = e.target.closest('.movie__card').getAttribute('data-id');
 
   // sprawdzenie, czy film jest zapisany w localStorage
-  const isWatched = localStorageMod.findMovieId(movieId, 'watched');
-  const isQueued = localStorageMod.findMovieId(movieId, 'queued');
+  const isWatched = localStorageMod.findMovieId(movieIdCard, 'watched');
+  const isQueued = localStorageMod.findMovieId(movieIdCard, 'queued');
 
-  fetchMovieById(movieId)
+  fetchMovieById(movieIdCard)
     .then(movieData => {
       backdrop.innerHTML = renderModal(movieData);
 
@@ -41,8 +41,8 @@ const openModal = e => {
       const watchedButton = document.getElementById('watched');
       const queueButton = document.getElementById('queue');
 
-      toLocalButton(watchedButton, movieId, 'watched', isWatched);
-      toLocalButton(queueButton, movieId, 'queued', isQueued);
+      toLocalButton(watchedButton, movieIdCard, 'watched', isWatched);
+      toLocalButton(queueButton, movieIdCard, 'queued', isQueued);
 
       closeModalButton.addEventListener('click', () => {
         // usuwanie nasłuchiwaczy zdarzeń
@@ -73,9 +73,9 @@ const toLocalButton = (button, id, arrayType, isSaved) => {
       button.classList.remove('is-save');
       const movieCardFromHTML = document.querySelector(`[data-id="${id}"]`);
       if (movieCardFromHTML) {
-        const index = movieID.indexOf(id);
+        const index = movieId.indexOf(id);
         if (index > -1) {
-          movieID.splice(index, 1);
+          movieId.splice(index, 1);
         }
         if (
           (isWatchedPage && arrayType === 'watched') ||
@@ -93,7 +93,7 @@ const toLocalButton = (button, id, arrayType, isSaved) => {
         (isQueuePage && arrayType === 'queued') ||
         (!isLibraryPage && button.id === arrayType)
       ) {
-        movieID.push(id);
+        movieId.push(id);
         fetchMovieById(id).then(data => {
           if (isLibraryPage) {
             movieBox.insertAdjacentHTML('beforeend', movieCard(data));

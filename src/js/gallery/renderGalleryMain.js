@@ -3,7 +3,7 @@ import { fetchingMovies } from './fetchingMovies';
 import { fetchingMovieDetails } from './fetchingMovieDetails';
 import { updatingMovieHTML } from './galleryMarkup';
 import { createPagination } from '../pagination';
-import { movieID, movieDetails, cbClear } from './galleryVariables';
+import { movieId, movieDetails, cbClear } from './galleryVariables';
 import { movieBox, loader } from './galleryVariables';
 
 
@@ -12,9 +12,9 @@ import { movieBox, loader } from './galleryVariables';
 
 const renderMovieList = moviesData => {
   moviesData.results.forEach(movie => {
-    movieID.push(movie.id);
+    movieId.push(movie.id);
   });
-  return movieID;
+  return movieId;
 };
 
 const showMovies = async page => {

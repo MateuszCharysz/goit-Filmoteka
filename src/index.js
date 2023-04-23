@@ -4,7 +4,7 @@ import { openModal } from './js/modal/openModal';
 import showMovies from './js/gallery/renderGalleryMain';
 import showMoviesKeyWords from './js/gallery/renderGallerySearch';
 import { movieBox, cbClear } from './js/gallery/galleryVariables';
-import debounce from 'lodash.debounce';
+// import debounce from 'lodash.debounce';
 
 //renderGallery => fetchingMovies => fetchingMovieDetails => galleryMarkup => pagination
 showMovies();

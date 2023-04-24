@@ -2,13 +2,28 @@ import { movieBox, movieId } from '../gallery/galleryVariables';
 import localStorageMod from '../localStorage/localStorageMod';
 import { movieCard } from '../localStorage/movieCard';
 import { fetchMovieById } from './fetchMovieById';
-import { showAddedToLocalStorageNotification, showRemovedFromLocalStorageNotification } from './showNotiflixMessage';
+import {
+  showAddedToLocalStorageNotification,
+  showRemovedFromLocalStorageNotification,
+} from './showNotiflixMessage';
 
+/**
+  Funkcja toLocalButton służy do obsługi przycisku dodania filmu do lokalnego magazynu przeglądarki.
+  @param {Object} button - przycisk, którego działanie ma być obsłużone.
+  @param {string} id - id filmu, który ma być dodany do lokalnego magazynu.
+  @param {string} arrayType - typ tablicy, do której film ma być dodany (np. 'watched' lub 'queued').
+  @param {boolean} isSaved - określa, czy film jest już zapisany w lokalnym magazynie, aby klasa CSS 'is-save' była odpowiednio ustawiona.
+  
+  Funkcja dodaje klasę CSS 'is-save' do przycisku, jeśli film jest już zapisany w lokalnym magazynie. W przeciwnym razie klasa jest usuwana.
+  
+  Funkcja obsługuje kliknięcie na przycisk. Jeśli film jest już zapisany w lokalnym magazynie, zostaje usunięty, a przycisk traci klasę 'is-save'. W przeciwnym razie film jest zapisywany w lokalnym magazynie, przycisk otrzymuje klasę 'is-save' i dodawany jest nowy element HTML reprezentujący film w odpowiedniej sekcji strony.
+*/
 const toLocalButton = (button, id, arrayType, isSaved) => {
   const isLibraryPage = document.body.classList.contains('library-page');
   const isWatchedPage = document.body.classList.contains('watched-page');
   const isQueuePage = document.body.classList.contains('queue-page');
 
+  
   function removeMovieCard(movieCardFromHTML) {
     const index = movieId.indexOf(id);
     if (index > -1) {
@@ -34,10 +49,6 @@ const toLocalButton = (button, id, arrayType, isSaved) => {
     }
   }
 
-  /*
-    Metoda classList.toggle('is-save', isSaved) dodaje lub usuwa klasę CSS 'is-save' z przycisku. 
-    Zmienna isSaved określa, czy film jest już zapisany w lokalnym magazynie, aby klasa CSS była odpowiednio ustawiona.
-  */
   button.classList.toggle('is-save', isSaved);
   function handleButtonClick() {
     if (localStorageMod.findMovieId(id, arrayType)) {

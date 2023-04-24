@@ -161,10 +161,14 @@
   align-items: center;
   text-align: center;
   text-transform: uppercase;
+  transition: ease;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     background-color: #ff6b01;
     border-color: #ff6b01;
+    scale: 1.1;
   }
 }
 
@@ -189,4 +193,9 @@ a:visited {
     display: block;
     background: #ff001b;
   }
+}
+
+.lib-btn--active {
+  background-color: #ff6b01;
+  border-color: #ff6b01;
 }

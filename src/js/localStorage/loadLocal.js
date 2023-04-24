@@ -9,17 +9,18 @@ function handleLibraryButtonClick(
   removeClass,
   addClass,
   otherBtn,
-  headerBtnClass
-
+  headerBtnClass,
 ) {
   const button = document.querySelector(buttonType);
-  const otherBtn = document.querySelector(otherBtn)
+  const secBtn = document.querySelector(otherBtn);
 
   button.addEventListener('click', async () => {
     cbClear();
     console.log(storageKey);
-    button.classList.add(headerBtnClass)
-    otherBtn.classList.remove(headerBtnClass)
+    button.classList.add(headerBtnClass);
+    console.log(secBtn);
+    if (secBtn.classList.remove(headerBtnClass) !== null)
+      secBtn.classList.remove(headerBtnClass);
     document.body.classList.remove(removeClass);
     document.body.classList.add(addClass);
     const movieIds = jsLocalStorage.load(storageKey);
@@ -34,14 +35,14 @@ handleLibraryButtonClick(
   'watched',
   'queue-page',
   'watched-page',
-  'library-button:last-of-type',
-  'lib-btn--active'
+  '#que',
+  'lib-btn--active',
 );
 handleLibraryButtonClick(
   '.library-button:last-of-type',
   'queued',
   'watched-page',
   'queue-page',
-  'button.library-button:first-of-type',
+  '#wat',
   'lib-btn--active',
 );

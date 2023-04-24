@@ -4,7 +4,7 @@
   align-items: center;
   height: 230px;
   background-image: url('../images/header/header-background-mobile@1x.jpg');
-  background-size: 100%;
+  background-size: 100% 230px;
   background-repeat: no-repeat;
   background-position: center center;
   padding: 40px 20px;
@@ -58,7 +58,7 @@
     display: flex;
     align-items: center;
     height: 20px;
-    margin-top: 35px;
+    margin-top: 55px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -95,6 +95,7 @@
   .header {
     background-image: url('../images/header/header-background-tablet@1x.jpg');
     height: 216px;
+    background-size: 100% 216px;
     &__logo--span {
       display: flex;
     }

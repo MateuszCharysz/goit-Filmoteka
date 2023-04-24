@@ -7,13 +7,19 @@ function handleLibraryButtonClick(
   buttonType,
   storageKey,
   removeClass,
-  addClass
+  addClass,
+  otherBtn,
+  headerBtnClass
+
 ) {
   const button = document.querySelector(buttonType);
+  const otherBtn = document.querySelector(otherBtn)
 
   button.addEventListener('click', async () => {
     cbClear();
     console.log(storageKey);
+    button.classList.add(headerBtnClass)
+    otherBtn.classList.remove(headerBtnClass)
     document.body.classList.remove(removeClass);
     document.body.classList.add(addClass);
     const movieIds = jsLocalStorage.load(storageKey);
@@ -27,11 +33,15 @@ handleLibraryButtonClick(
   'button.library-button:first-of-type',
   'watched',
   'queue-page',
-  'watched-page'
+  'watched-page',
+  'library-button:last-of-type',
+  'lib-btn--active'
 );
 handleLibraryButtonClick(
   '.library-button:last-of-type',
   'queued',
   'watched-page',
-  'queue-page'
+  'queue-page',
+  'button.library-button:first-of-type',
+  'lib-btn--active',
 );

@@ -1,39 +1,39 @@
 import { fetchingMovieDetails } from '../gallery/fetchingMovieDetails';
 import { updatingMovieHTML } from '../gallery/galleryMarkup';
-import { cbClear, movieBox, movieId } from '../gallery/galleryVariables';
+import { cbClear, movieId } from '../gallery/galleryVariables';
 import jsLocalStorage from './jsLocalStorage';
 import localStorageMod from './localStorageMod';
 
-let moviesId;
-const watchedButton = document.querySelector(
+
+function handleLibraryButtonClick(
+  buttonType,
+  storageKey,
+  removeClass,
+  addClass
+) {
+  const button = document.querySelector(buttonType);
+
+  button.addEventListener('click', async () => {
+    cbClear();
+    console.log(storageKey);
+    document.body.classList.remove(removeClass);
+    document.body.classList.add(addClass);
+    const movieIds = jsLocalStorage.load(storageKey);
+    movieId.push(...movieIds);
+    await fetchingMovieDetails();
+    updatingMovieHTML();
+  });
+}
+
+handleLibraryButtonClick(
   'button.library-button:first-of-type',
+  'watched',
+  'queue-page',
+  'watched-page'
 );
-const queuedButton = document.querySelector('.library-button:last-of-type');
-
-watchedButton.addEventListener('click', async () => {
-  localStorageMod.createLocalStorage();
-  cbClear();
-  console.log('Watched');
-  document.body.classList.remove('queue-page');
-  document.body.classList.add('watched-page');
-  moviesId = jsLocalStorage.load('watched');
-  moviesId.forEach(q => {
-    movieId.push(q);
-  });
-  await fetchingMovieDetails();
-  updatingMovieHTML();
-});
-
-queuedButton.addEventListener('click', async () => {
-  localStorageMod.createLocalStorage()
-  cbClear();
-  console.log('Queued');
-  document.body.classList.remove('watched-page');
-  document.body.classList.add('queue-page');
-  moviesId = jsLocalStorage.load('watched');
-  moviesId.forEach(q => {
-    movieId.push(q);
-  });
-  await fetchingMovieDetails();
-  updatingMovieHTML();
-});
+handleLibraryButtonClick(
+  '.library-button:last-of-type',
+  'queued',
+  'watched-page',
+  'queue-page'
+);

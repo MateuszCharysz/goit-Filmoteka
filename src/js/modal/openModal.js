@@ -1,9 +1,9 @@
 import { fetchMovieById } from './fetchMovieById';
 import { movieBox, movieId } from '../gallery/galleryVariables';
 import localStorageMod from '../localStorage/localStorageMod';
-import { movieCard } from '../localStorage/movieCard';
 import { closeModal } from './closeModal';
 import { renderModal } from './modalMarkup';
+import { toLocalButton } from './toLocalButton';
 
 let isModalOpen = false;
 let currentScrollY = 0;
@@ -16,7 +16,6 @@ const openModal = e => {
   if (!e.target.closest('.movie__card')) {
     return;
   }
-  localStorageMod.createLocalStorage();
   const backdrop = document.createElement('div');
   backdrop.classList.add('backdrop');
 
@@ -54,63 +53,11 @@ const openModal = e => {
       });
     })
     .catch(error => {
-      throw new Error(error);
+      console.log(error);
     });
   addEventListener('keydown', clickEscape);
 };
 
-const toLocalButton = (button, id, arrayType, isSaved) => {
-  // sprawdź, czy jesteś na stronie biblioteki
-  const isLibraryPage = document.body.classList.contains('library-page');
-  // sprawdź, czy jesteś na stronie 'watched' lub 'queue'
-  const isWatchedPage = document.body.classList.contains('watched-page');
-  const isQueuePage = document.body.classList.contains('queue-page');
-
-  button.classList.toggle('is-save', isSaved);
-  button.addEventListener('click', () => {
-    if (localStorageMod.findMovieId(id, arrayType)) {
-      localStorageMod.removeMovieId(id, arrayType);
-      button.classList.remove('is-save');
-      const movieCardFromHTML = document.querySelector(`[data-id="${id}"]`);
-      if (movieCardFromHTML) {
-        const index = movieId.indexOf(id);
-        if (index > -1) {
-          movieId.splice(index, 1);
-        }
-        if (
-          (isWatchedPage && arrayType === 'watched') ||
-          (isQueuePage && arrayType === 'queued') ||
-          (!isLibraryPage && button.id === arrayType)
-        ) {
-          movieCardFromHTML.remove();
-        }
-      }
-    } else {
-      localStorageMod.saveMovieId(id, arrayType);
-      button.classList.add('is-save');
-      if (
-        (isWatchedPage && arrayType === 'watched') ||
-        (isQueuePage && arrayType === 'queued') ||
-        (!isLibraryPage && button.id === arrayType)
-      ) {
-        movieId.push(id);
-        fetchMovieById(id).then(data => {
-          if (isLibraryPage) {
-            movieBox.insertAdjacentHTML('beforeend', movieCard(data));
-          } else {
-            const watchedBox = document.querySelector('.watched-movies');
-            const queueBox = document.querySelector('.queued-movies');
-            if (isWatchedPage) {
-              watchedBox.insertAdjacentHTML('beforeend', movieCard(data));
-            } else if (isQueuePage) {
-              queueBox.insertAdjacentHTML('beforeend', movieCard(data));
-            }
-          }
-        });
-      }
-    }
-  });
-};
 const handleBodyScrolling = (isModalOpen, currentScrollY) => {
   if (isModalOpen) {
     document.body.style.top = `-${currentScrollY}px`;

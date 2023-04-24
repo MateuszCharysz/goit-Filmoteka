@@ -1,4 +1,8 @@
-// funkcja zamykająca modal
+/**
+  Funkcja zamykająca modal.
+  Usuwa tło modala i klasę blokującą przewijanie strony.
+  @return {void}
+*/
 const closeModal = () => {
   const backdrop = document.querySelector('.backdrop');
   backdrop.remove();

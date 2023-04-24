@@ -1,3 +1,8 @@
+/**
+    Funkcja renderująca kod HTML modala z danymi filmu.
+    @param {Object} e - obiekt z danymi filmu
+    @returns {string} - kod HTML modala z danymi filmu
+*/
 const renderModal = e => {
   const genres = e.genres.map(genre => genre.name).join(', ');
   const markup = `

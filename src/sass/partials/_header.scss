@@ -2,13 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 216px;
+  height: 230px;
   background-image: url('../images/header/header-background-mobile@1x.jpg');
-  background-size: 100% 216px;
+  background-size: 100% 230px;
   background-repeat: no-repeat;
   background-position: center center;
   padding: 40px 20px;
-  // inne style
+
   &-library {
     background-image: url('../images/header/header-background-library-mobile@1x.jpg');
   }
@@ -49,8 +49,8 @@
     text-transform: uppercase;
     display: flex;
     gap: 40px;
-    color: #fff;
-    border-color: #fff;
+    color: $white;
+    border-color: $white;
   }
   &__search {
     width: 320px;
@@ -61,6 +61,7 @@
     margin-top: 55px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
     &--input {
       width: 100%;
       background: transparent;
@@ -68,6 +69,13 @@
       border: none;
       padding: 0;
       color: $white;
+    }
+    &--warning {
+      position: absolute;
+      display: none;
+      top: 35px;
+      color: #ff001b;
+      font-size: 14px;
     }
     &--search {
       width: 12px;
@@ -86,11 +94,16 @@
 @media screen and (min-width: 768px) {
   .header {
     background-image: url('../images/header/header-background-tablet@1x.jpg');
+    height: 216px;
+    background-size: 100% 216px;
     &__logo--span {
       display: flex;
     }
     &__search {
       width: 394px;
+      &--warning {
+        top: 55px;
+      }
     }
     &-library {
       background-image: url('../images/header/header-background-library-tablet@1x.jpg');
@@ -144,8 +157,8 @@
 
 .library-button {
   background-color: transparent;
-  border: 1px solid #ffffff;
-  color: #ffffff;
+  border: 1px solid $white;
+  color: $white;
   border-radius: 5px;
   margin-top: 66px;
   padding-top: 14px;
@@ -161,20 +174,25 @@
   align-items: center;
   text-align: center;
   text-transform: uppercase;
+  transition: ease;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    background-color: #ff6b01;
-    border-color: #ff6b01;
+    border-color: getColor(light-orange);
+    color: getColor(light-orange);
+    scale: 1.1;
+    cursor: pointer;
   }
 }
 
 a:link {
   text-decoration: none;
-  color: #ffffff;
+  color: $white;
 }
 
 a:visited {
-  color: #ffffff;
+  color: $white;
 }
 
 .header__button--active {
@@ -187,6 +205,15 @@ a:visited {
     top: 15px;
     position: absolute;
     display: block;
-    background: #ff001b;
+    background: getColor(red-one);
   }
 }
+
+.lib-btn--active {
+  background-color: getColor(light-orange);;
+  border-color: getColor(light-orange);;
+  &:hover {
+    color: #fff;
+  }
+}
+

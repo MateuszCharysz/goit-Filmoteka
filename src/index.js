@@ -3,8 +3,10 @@ import { openModal } from './js/modal/openModal';
 import showMovies from './js/gallery/renderGalleryMain';
 import showMoviesKeyWords from './js/gallery/renderGallerySearch';
 import { movieBox, cbClear } from './js/gallery/galleryVariables';
+import localStorageMod from './js/localStorage/localStorageMod';
 // import debounce from 'lodash.debounce';
 
+localStorageMod.createLocalStorage();
 //renderGallery => fetchingMovies => fetchingMovieDetails => galleryMarkup => pagination
 showMovies();
 

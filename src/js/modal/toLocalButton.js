@@ -2,6 +2,7 @@ import { movieBox, movieId } from '../gallery/galleryVariables';
 import localStorageMod from '../localStorage/localStorageMod';
 import { movieCard } from '../localStorage/movieCard';
 import { fetchMovieById } from './fetchMovieById';
+import { showAddedToLocalStorageNotification, showRemovedFromLocalStorageNotification } from './showNotiflixMessage';
 
 const toLocalButton = (button, id, arrayType, isSaved) => {
   const isLibraryPage = document.body.classList.contains('library-page');
@@ -42,6 +43,8 @@ const toLocalButton = (button, id, arrayType, isSaved) => {
     if (localStorageMod.findMovieId(id, arrayType)) {
       localStorageMod.removeMovieId(id, arrayType);
       button.classList.remove('is-save');
+      // Notiflix usuwanie
+      showRemovedFromLocalStorageNotification(arrayType);
       const movieCardFromHTML = document.querySelector(`[data-id="${id}"]`);
       if (movieCardFromHTML) {
         removeMovieCard(movieCardFromHTML);
@@ -49,6 +52,8 @@ const toLocalButton = (button, id, arrayType, isSaved) => {
     } else {
       localStorageMod.saveMovieId(id, arrayType);
       button.classList.add('is-save');
+      // Notiflix dodawanie
+      showAddedToLocalStorageNotification(arrayType);
       if (
         (isWatchedPage && arrayType === 'watched') ||
         (isQueuePage && arrayType === 'queued')
@@ -61,4 +66,5 @@ const toLocalButton = (button, id, arrayType, isSaved) => {
 
   button.addEventListener('click', handleButtonClick);
 };
+
 export { toLocalButton };

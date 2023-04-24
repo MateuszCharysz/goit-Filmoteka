@@ -2,8 +2,6 @@ import { fetchingMovieDetails } from '../gallery/fetchingMovieDetails';
 import { updatingMovieHTML } from '../gallery/galleryMarkup';
 import { cbClear, movieId } from '../gallery/galleryVariables';
 import jsLocalStorage from './jsLocalStorage';
-import localStorageMod from './localStorageMod';
-
 
 function handleLibraryButtonClick(
   buttonType,

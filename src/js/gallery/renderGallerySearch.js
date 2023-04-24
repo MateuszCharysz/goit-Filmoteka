@@ -14,10 +14,11 @@ const renderMovieList = moviesData => {
 };
 
 const showMoviesKeyWords = async (page, search) => {
+  loader.classList.remove('loader--is-hidden');
   const moviesData = await fetchingMoviesSearch(page, search);
   renderMovieList(moviesData);
   await fetchingMovieDetails();
-  loader.classList.add('loader--visibility');
+  loader.classList.add('loader--is-hidden');
   updatingMovieHTML();
   console.log('movies data', moviesData);
   const pagination = createPagination(moviesData);

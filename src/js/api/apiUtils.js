@@ -1,4 +1,3 @@
-// sposób użycia pierwsze .then(httpCodeHandler) w fetch
 const httpCodeHandler = response => {
   if (!response.ok) {
     throw new Error(response.status);
@@ -26,10 +25,4 @@ const apiUtils = {
   apiUrlStringBuilder,
 };
 export default apiUtils;
-//przykład użycia
-// console.log(apiUrlStringBuilder(API_TRENDING()));
-// console.log(apiUrlStringBuilder(API_TRENDING(3)));
-// console.log(apiUrlStringBuilder(API_SEARCH('dog')));
-// console.log(apiUrlStringBuilder(API_SEARCH('girl', 4)));
 
-// w innym mogule apiUtils.apiUrlStringBuilder(apiUtils.(API_SEARCH('girl', 4))

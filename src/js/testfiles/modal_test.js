@@ -1,7 +1,3 @@
-// to import object => import { MODAL_TEST } from './testfiles/modal_test';
-// https://developers.themoviedb.org/3/getting-started/images
-// to jest to co otrzymujemy z https://api.themoviedb.org/3/movie/626735?api_key=64cb7e9375c055230d64b013c4bca79f&language=en-US
-// aby tego użyć wstawiamy zmienną MODAL_TEST w miejsce obiektu który miałby przyjść z fetcha (do testowania mark up)
 export const MODAL_TEST = {
   adult: false,
   backdrop_path: '/cGnaZm6EQOJESde3Vv4v53Zk4gN.jpg',

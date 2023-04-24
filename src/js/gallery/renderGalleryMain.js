@@ -7,9 +7,6 @@ import { movieId, movieDetails, cbClear } from './galleryVariables';
 import { movieBox, loader } from './galleryVariables';
 
 
-// export let movieID = [];
-// export let movieDetails = [];
-
 const renderMovieList = moviesData => {
   moviesData.results.forEach(movie => {
     movieId.push(movie.id);
@@ -23,7 +20,6 @@ const showMovies = async page => {
   await fetchingMovieDetails();
   loader.classList.add('loader--visibility');
   updatingMovieHTML();
-  console.log(moviesData);
   const pagination = createPagination(moviesData);
   pagination.on('beforeMove', ({ page }) => {
     cbClear();

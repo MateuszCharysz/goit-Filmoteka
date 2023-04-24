@@ -17,19 +17,19 @@
 .modal {
   position: relative;
   margin: 20px auto;
-  background-color: #fff;
+  background-color: $white;
   font: 500 12px/1.33333 Roboto, sans-serif;
-  color: #000;
+  color: $black;
   max-height: calc(100vh - 40px);
   width: 280px;
   padding: 48px 20px 41px;
   border-radius: 5px;
   overflow-x: auto;
-  scrollbar-width: none; /* ukrycie paska przewijania w Chrome, Firefox */
-  -ms-overflow-style: none; /* ukrycie paska przewijania w Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
   &::-webkit-scrollbar {
-    display: none; /* ukrycie paska przewijania w Safari i Chrome */
+    display: none;
   }
   @include tablet {
     display: flex;
@@ -87,12 +87,12 @@
 
     &--label {
       min-width: 108px;
-      color: #8c8c8c;
+      color: getColor(modal-gray);
     }
 
     &--value {
       &--vote {
-        color: #8c8c8c;
+        color: getColor(modal-gray);
 
         & vote_average,
         & vote__count {
@@ -108,15 +108,15 @@
         }
 
         & vote_average {
-          background: #ff6b01;
+          background: getColor(light-orange);
           margin-right: 1px;
-          color: white;
+          color: $white;
         }
 
         & vote__count {
-          background: #f7f7f7;
+          background: getColor(background-gray);
           margin-left: 1px;
-          color: #000000;
+          color: $black;
         }
       }
     }
@@ -155,11 +155,11 @@
     line-height: 16px;
     background-color: transparent;
     text-transform: uppercase;
-    border: 1px solid #000000;
+    border: 1px solid $black;
     &:hover {
       border: none;
       color: $white;
-      background-color: #ff6b01;
+      background-color: getColor(light-orange);
       transition: background-color 0.2s ease-in-out;
     }
     @include tablet {
@@ -205,5 +205,5 @@
 .is-save {
   border: none;
   color: $white;
-  background-color: #ff6b01;
+  background-color: getColor(light-orange);
 }

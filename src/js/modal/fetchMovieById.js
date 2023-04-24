@@ -1,8 +1,7 @@
-const fetchMovieById = id => {
-  const API_KEY = '64cb7e9375c055230d64b013c4bca79f';
-  const API_URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
+import apiUtils from '../api/apiUtils';
 
-  return fetch(API_URL)
+const fetchMovieById = id => {
+  return fetch(apiUtils.apiUrlStringBuilder(apiUtils.API_ID(id)))
     .then(response => {
       if (!response.ok) {
         if (response.status === 429) {
@@ -19,7 +18,7 @@ const fetchMovieById = id => {
       return response.json();
     })
     .catch(error => {
-      throw new Error(error)
+      throw new Error(error);
     });
 };
 export { fetchMovieById };

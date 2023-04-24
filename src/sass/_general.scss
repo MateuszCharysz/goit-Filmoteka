@@ -35,11 +35,11 @@ figure {
 body {
   height: 100%;
   overflow-y: scroll;
-  scrollbar-width: none; /* ukrycie paska przewijania w Chrome, Firefox */
-  -ms-overflow-style: none; /* ukrycie paska przewijania w Edge */
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 body::-webkit-scrollbar {
-  display: none; /* ukrycie paska przewijania w Safari i Chrome */
+  display: none; 
 }
 .container {
   width: auto;
@@ -47,14 +47,14 @@ body::-webkit-scrollbar {
   padding-left: 15px;
   padding-right: 15px;
 }
-// responsywność dla ekranów o maksymalnej szerokości 768px
+
 @media screen and (min-width: 768px) {
   .container {
     width: 768px;
   }
 }
 
-// responsywność dla ekranów o maksymalnej szerokości 1280px
+
 @media screen and (min-width: 1280px) {
   .container {
     width: 1280px;

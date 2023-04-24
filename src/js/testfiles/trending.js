@@ -1,7 +1,3 @@
-// to import object => import { TRENDING_TEST } from './testfiles/trending';
-// https://developers.themoviedb.org/3/getting-started/images
-// to jest to co otrzymujemy z https://api.themoviedb.org/3/trending/movie/day?api_key=64cb7e9375c055230d64b013c4bca79f
-// aby tego użyć wstawiamy zmienną TRENDING_TEST w miejsce obiektu który miałby przyjść z fetcha (do testowania mark up)
 export const TRENDING_TEST = {
   page: 1,
   results: [

@@ -15,7 +15,7 @@
     font-size: 14px;
     line-height: 16px;
     text-align: center;
-    color: #545454;
+    color: getColor(dark-gray);
     position: relative;
 
     @include tablet-and-desktop {

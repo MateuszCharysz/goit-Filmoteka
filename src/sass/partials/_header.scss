@@ -8,7 +8,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   padding: 40px 20px;
-  // inne style
+
   &-library {
     background-image: url('../images/header/header-background-library-mobile@1x.jpg');
   }
@@ -49,8 +49,8 @@
     text-transform: uppercase;
     display: flex;
     gap: 40px;
-    color: #fff;
-    border-color: #fff;
+    color: $white;
+    border-color: $white;
   }
   &__search {
     width: 320px;
@@ -144,8 +144,8 @@
 
 .library-button {
   background-color: transparent;
-  border: 1px solid #ffffff;
-  color: #ffffff;
+  border: 1px solid $white;
+  color: $white;
   border-radius: 5px;
   margin-top: 66px;
   padding-top: 14px;
@@ -163,18 +163,18 @@
   text-transform: uppercase;
 
   &:hover {
-    background-color: #ff6b01;
-    border-color: #ff6b01;
+    background-color: getColor(light-orange);
+    border-color: getColor(light-orange);
   }
 }
 
 a:link {
   text-decoration: none;
-  color: #ffffff;
+  color: $white;
 }
 
 a:visited {
-  color: #ffffff;
+  color: $white;
 }
 
 .header__button--active {
@@ -187,6 +187,6 @@ a:visited {
     top: 15px;
     position: absolute;
     display: block;
-    background: #ff001b;
+    background: getColor(red-one);
   }
 }

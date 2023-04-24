@@ -4,7 +4,7 @@ import apiUtils from '../api/apiUtils';
 export const fetchingMovieDetails = async () => {
   for (let id of movieId) {
     try {
-      const response = await fetch(
+      const response = await fetch (
         apiUtils.apiUrlStringBuilder(apiUtils.API_ID(id)),
       );
       if (!response.ok) {
@@ -16,5 +16,5 @@ export const fetchingMovieDetails = async () => {
       console.log(error);
     }
   }
-  console.log(movieDetails);
+
 };

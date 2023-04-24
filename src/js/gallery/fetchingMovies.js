@@ -8,7 +8,7 @@ export const fetchingMovies = async (page) => {
       throw new Error(response.status);
     }
     const moviesData = await response.json();
-    console.log(moviesData);
+    
     return moviesData;
   } catch (error) {
     console.log(error);

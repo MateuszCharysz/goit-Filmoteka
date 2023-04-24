@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header header-library">
   <div class="container">
     <a href="../src/index.html">
       <div class="header__logo">
@@ -9,25 +9,15 @@
       </div></a
     >
 
-    <div class="header__search">
-      <input
-        id="search"
-        class="header__search--input"
-        placeholder="Movie search"
-      />
-      <button id="button">
-        <svg class="header__search--search" width="20px" height="20px">
-          <use xlink:href="./images/svg/search.svg#search"></use>
-        </svg>
-      </button>
-    </div>
     <div class="header__buttons">
+      <span class="header__button"><a href="../src/index.html">Home</a></span>
       <span class="header__button header__button--active"
-        ><a href="../src/index.html">Home</a></span
-      >
-      <span class="header__button"
         ><a href="../src/library.html">my library</a></span
       >
+    </div>
+    <div class="library-buttons">
+      <button class="library-button">Watched</button>
+      <button class="library-button">Queue</button>
     </div>
   </div>
 </header>

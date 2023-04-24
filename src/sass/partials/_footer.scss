@@ -1,12 +1,13 @@
 .footer {
   position: absolute;
-  height: 100px;
+  height: 77px;
   background: $footer-background;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 73px;
+  padding: 0 40px;
+
   &__span {
     font-family: 'Roboto';
     font-style: normal;
@@ -16,10 +17,19 @@
     text-align: center;
     color: #545454;
     position: relative;
+
+    @include tablet-and-desktop {
+      display: flex;
+    }
   }
+
+  &__text {
+    margin: 10px 5px;
+  }
+
   &__svg {
     margin: 0 10px;
-    margin-top: 11.8px;
+
   }
 }
 

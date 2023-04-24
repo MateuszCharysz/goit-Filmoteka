@@ -1,97 +1,136 @@
-'use strict';
-
-/*
-  fetchMovieById został dodany w celu przetestowania czy modal zadziała z danymi pobranymi z api.themoviedb
-  Wystarczy, że odblokujemy komentarz od <--- i wrzucimy movieId razem z fetchem i nadal pobieramy dane z MODAL_TEST
-*/
-import { MODAL_TEST } from '../testfiles/modal_test';
-import { fetchMovieById } from '../api/fetchMovieById';
-import { addToLocalStorage } from '../localStorage/localStorage';
+import { fetchMovieById } from './fetchMovieById';
+import { movieBox, movieId } from '../gallery/galleryVariables';
+import localStorageMod from '../localStorage/localStorageMod';
+import { movieCard } from '../localStorage/movieCard';
 import { closeModal } from './closeModal';
-import { markupData } from './modalMarkup';
+import { renderModal } from './modalMarkup';
 
-const mainContent = document.querySelector('#main');
+let isModalOpen = false;
+let currentScrollY = 0;
+
 // funkcja otwierająca modal
 const openModal = e => {
+  isModalOpen = true;
+  currentScrollY = window.scrollY;
   // przerywa funkcję, jeśli zdarzenie nie występuje na elemencie z klasą "movie-card".
   if (!e.target.closest('.movie__card')) {
     return;
   }
+  localStorageMod.createLocalStorage();
   const backdrop = document.createElement('div');
   backdrop.classList.add('backdrop');
 
   // pobranie id filmu z atrybutu "data-id" klikniętego elementu
+  const movieIdCard = e.target.closest('.movie__card').getAttribute('data-id');
 
-  /* 
-  //<-------- OD TEJ CZĘŚĆ POBIERAMY DANE Z MODALA
-  
-  backdrop.innerHTML = markupData(MODAL_TEST);
-  
-  // dodanie elementu backdrop do ciała dokumentu
-  document.body.appendChild(backdrop);
-  
-  // blokuje możliwość skrolowania w momencie uruchomienia modala
-  document.body.classList.add('overflow-off');
-  const closeModalButton = document.querySelector('#modal__close');
+  // sprawdzenie, czy film jest zapisany w localStorage
+  const isWatched = localStorageMod.findMovieId(movieIdCard, 'watched');
+  const isQueued = localStorageMod.findMovieId(movieIdCard, 'queued');
 
-  // pobranie id filmu z MODAL_TEST
-  const movieId = MODAL_TEST.id;
-  const watchedButton = document.getElementById('watched');
-  const queueButton = document.getElementById('queue');
-  
-  // Ten fragment kodu reaguje na kliknięcie przycisków "watchedButton" i "queueButton" i wywołuje 
-  // funkcję "addToLocalStorage" z odpowiednimi argumentami. Funkcja ta zapisuje identyfikator filmu 
-  // do lokalnego magazynu przeglądarki pod kluczem "user" i listą "watched" lub "queue", w zależności od przycisku, 
-  // który został kliknięty.
-  
-  watchedButton.addEventListener('click', () =>
-    addToLocalStorage(movieId, 'watched')
-    );
-    queueButton.addEventListener('click', () =>
-    addToLocalStorage(movieId, 'queue')
-    );
-    // dodanie nasłuchiwania na zdarzenie 'click' do elementu `closeModalButton` z funkcją `closeModal`
-    closeModalButton.addEventListener('click', closeModal);
-  
-  
-  */
-
-  const movieId = e.target.closest('.movie__card').getAttribute('data-id');
-  fetchMovieById(movieId)
+  fetchMovieById(movieIdCard)
     .then(movieData => {
-      backdrop.innerHTML = markupData(movieData);
+      backdrop.innerHTML = renderModal(movieData);
 
       // dodanie elementu backdrop do ciała dokumentu
       document.body.appendChild(backdrop);
 
-      // blokuje możliwość skrolowania w momencie uruchomienia modala
-      document.body.classList.add('overflow-off');
+      // blokowanie scrollowania strony
+      handleBodyScrolling(true, currentScrollY);
 
       const closeModalButton = document.querySelector('#modal__close');
-
       const watchedButton = document.getElementById('watched');
       const queueButton = document.getElementById('queue');
 
-      //  Ten fragment kodu reaguje na kliknięcie przycisków "watchedButton" i "queueButton" i wywołuje
-      //  funkcję "addToLocalStorage" z odpowiednimi argumentami. Funkcja ta zapisuje identyfikator filmu
-      //  do lokalnego magazynu przeglądarki pod kluczem "user" i listą "watched" lub "queue", w zależności od przycisku,
-      //  który został kliknięty.
+      toLocalButton(watchedButton, movieIdCard, 'watched', isWatched);
+      toLocalButton(queueButton, movieIdCard, 'queued', isQueued);
 
-      watchedButton.addEventListener('click', () =>
-        addToLocalStorage(movieId, 'watched')
-      );
-      queueButton.addEventListener('click', () =>
-        addToLocalStorage(movieId, 'queue')
-      );
-      // dodanie nasłuchiwania na zdarzenie 'click' do elementu `closeModalButton` z funkcją `closeModal`
-      closeModalButton.addEventListener('click', closeModal);
+      closeModalButton.addEventListener('click', () => {
+        // usuwanie nasłuchiwaczy zdarzeń
+        watchedButton.removeEventListener('click', () => null);
+        queueButton.removeEventListener('click', null);
+        // odblokowanie scrollowania strony
+        handleBodyScrolling(false, currentScrollY);
+        closeModal();
+      });
     })
     .catch(error => {
-      console.error(error);
+      throw new Error(error);
     });
+  addEventListener('keydown', clickEscape);
 };
 
-// dodanie nasłuchiwania na zdarzenie 'click' do elementu `mainContent` z funkcją `openModal`
-mainContent.addEventListener('click', openModal);
+const toLocalButton = (button, id, arrayType, isSaved) => {
+  // sprawdź, czy jesteś na stronie biblioteki
+  const isLibraryPage = document.body.classList.contains('library-page');
+  // sprawdź, czy jesteś na stronie 'watched' lub 'queue'
+  const isWatchedPage = document.body.classList.contains('watched-page');
+  const isQueuePage = document.body.classList.contains('queue-page');
+
+  button.classList.toggle('is-save', isSaved);
+  button.addEventListener('click', () => {
+    if (localStorageMod.findMovieId(id, arrayType)) {
+      localStorageMod.removeMovieId(id, arrayType);
+      button.classList.remove('is-save');
+      const movieCardFromHTML = document.querySelector(`[data-id="${id}"]`);
+      if (movieCardFromHTML) {
+        const index = movieId.indexOf(id);
+        if (index > -1) {
+          movieId.splice(index, 1);
+        }
+        if (
+          (isWatchedPage && arrayType === 'watched') ||
+          (isQueuePage && arrayType === 'queued') ||
+          (!isLibraryPage && button.id === arrayType)
+        ) {
+          movieCardFromHTML.remove();
+        }
+      }
+    } else {
+      localStorageMod.saveMovieId(id, arrayType);
+      button.classList.add('is-save');
+      if (
+        (isWatchedPage && arrayType === 'watched') ||
+        (isQueuePage && arrayType === 'queued') ||
+        (!isLibraryPage && button.id === arrayType)
+      ) {
+        movieId.push(id);
+        fetchMovieById(id).then(data => {
+          if (isLibraryPage) {
+            movieBox.insertAdjacentHTML('beforeend', movieCard(data));
+          } else {
+            const watchedBox = document.querySelector('.watched-movies');
+            const queueBox = document.querySelector('.queued-movies');
+            if (isWatchedPage) {
+              watchedBox.insertAdjacentHTML('beforeend', movieCard(data));
+            } else if (isQueuePage) {
+              queueBox.insertAdjacentHTML('beforeend', movieCard(data));
+            }
+          }
+        });
+      }
+    }
+  });
+};
+const handleBodyScrolling = (isModalOpen, currentScrollY) => {
+  if (isModalOpen) {
+    document.body.style.top = `-${currentScrollY}px`;
+    document.body.style.position = 'fixed';
+  } else {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    console.log(currentScrollY);
+    window.scrollTo(0, currentScrollY);
+  }
+};
+
+const clickEscape = event => {
+  if (isModalOpen) {
+    if (event.keyCode === 27) {
+      closeModal();
+      isModalOpen = false;
+      handleBodyScrolling(false, currentScrollY);
+    }
+  }
+};
 
 export { openModal };

@@ -1,5 +1,11 @@
 import apiUtils from '../api/apiUtils';
 
+/**
+ * Funkcja fetchMovieById pobiera dane filmu z API na podstawie podanego id.
+  @param {string} id - id filmu, dla którego pobieramy dane
+  @returns {Promise} - obiekt Promise reprezentujący pobrane dane filmu
+  @throws {Error} - rzucany jest błąd, gdy wystąpi problem z pobraniem danych z API
+*/
 const fetchMovieById = id => {
   return fetch(apiUtils.apiUrlStringBuilder(apiUtils.API_ID(id)))
     .then(response => {

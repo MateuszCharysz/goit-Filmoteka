@@ -3,6 +3,17 @@ import { updatingMovieHTML } from '../gallery/galleryMarkup';
 import { cbClear, movieId } from '../gallery/galleryVariables';
 import jsLocalStorage from './jsLocalStorage';
 
+/**
+ * Funkcja obsługi kliknięcia przycisku w bibliotece filmów
+ *
+ * @param {string} buttonType - typ przycisku
+ * @param {string} storageKey - klucz local storage
+ * @param {string} removeClass - nazwa klasy do usunięcia z elementu body
+ * @param {string} addClass - nazwa klasy do dodania do elementu body
+ *
+ * @returns {void}
+ */
+
 function handleLibraryButtonClick(
   buttonType,
   storageKey,
@@ -29,7 +40,7 @@ function handleLibraryButtonClick(
     updatingMovieHTML();
   });
 }
-
+// Obsługa kliknięcia przycisku "Watched"
 handleLibraryButtonClick(
   'button.library-button:first-of-type',
   'watched',
@@ -38,6 +49,7 @@ handleLibraryButtonClick(
   '#que',
   'lib-btn--active',
 );
+// Obsługa kliknięcia przycisku "Queued"
 handleLibraryButtonClick(
   '.library-button:last-of-type',
   'queued',

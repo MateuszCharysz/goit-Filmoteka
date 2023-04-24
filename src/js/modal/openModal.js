@@ -1,5 +1,4 @@
 import { fetchMovieById } from './fetchMovieById';
-import { movieBox, movieId } from '../gallery/galleryVariables';
 import localStorageMod from '../localStorage/localStorageMod';
 import { closeModal } from './closeModal';
 import { renderModal } from './modalMarkup';
@@ -8,7 +7,11 @@ import { toLocalButton } from './toLocalButton';
 let isModalOpen = false;
 let currentScrollY = 0;
 
-// funkcja otwierająca modal
+/**
+* Funkcja otwierająca modal
+* @param {Event} e - obiekt zdarzenia kliknięcia 
+* @returns 
+*/
 const openModal = e => {
   isModalOpen = true;
   currentScrollY = window.scrollY;
@@ -57,7 +60,11 @@ const openModal = e => {
     });
   addEventListener('keydown', clickEscape);
 };
-
+/**
+  Funkcja odpowiedzialna za blokowanie lub odblokowywanie scrollowania strony.
+  @param {boolean} isModalOpen - wartość logiczna określająca, czy modal jest otwarty
+  @param {number} currentScrollY - wartość liczbową określająca pozycję scrolla
+*/
 const handleBodyScrolling = (isModalOpen, currentScrollY) => {
   if (isModalOpen) {
     document.body.style.top = `-${currentScrollY}px`;
@@ -69,7 +76,10 @@ const handleBodyScrolling = (isModalOpen, currentScrollY) => {
     window.scrollTo(0, currentScrollY);
   }
 };
-
+/**
+ * Funkcja wywoływana po naciśnięciu klawisza Esc
+ * @param {Event} event - obiekt zdarzenia klawisza 
+ */
 const clickEscape = event => {
   if (isModalOpen) {
     if (event.keyCode === 27) {

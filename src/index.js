@@ -19,10 +19,15 @@ button.addEventListener('click', event => {
   cbClear();
   showMoviesKeyWords(1, searchInput.value);
 });
-// button.addEventListener('click', showMoviesKeyWords);
-// searchInput.addEventListener(
-//   ('input', debounce(showMoviesKeyWords(1, searchInput.value), 300)),
-// );
 
-// openModal => fetchMovieById => modalMarkup
+const searchWarninng = document.querySelector('.header__search--warning');
+
+button.addEventListener('click', event => {
+  if (searchInput.value.length === 0) {
+    searchWarninng.style.display = 'block';
+  } else {
+    searchWarninng.style.display = 'none';
+  }
+});
+
 movieBox.addEventListener('click', openModal);

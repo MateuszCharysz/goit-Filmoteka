@@ -18,13 +18,13 @@ button.addEventListener('click', event => {
   showMoviesKeyWords(1, searchInput.value);
 });
 
-const emptySearchWarninng = document.querySelector('.header__search--warning');
+const searchWarninng = document.querySelector('.header__search--warning');
 
 button.addEventListener('click', event => {
   if (searchInput.value.length === 0) {
-    emptySearchWarninng.style.display = 'block';
+    searchWarninng.style.display = 'block';
   } else {
-    emptySearchWarninng.style.display = 'none';
+    searchWarninng.style.display = 'none';
   }
 });
 

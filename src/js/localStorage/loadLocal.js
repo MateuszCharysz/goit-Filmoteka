@@ -27,9 +27,7 @@ function handleLibraryButtonClick(
 
   button.addEventListener('click', async () => {
     cbClear();
-    console.log(storageKey);
     button.classList.add(headerBtnClass);
-    console.log(secBtn);
     if (secBtn.classList.remove(headerBtnClass) !== null)
       secBtn.classList.remove(headerBtnClass);
     document.body.classList.remove(removeClass);

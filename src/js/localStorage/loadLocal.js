@@ -1,6 +1,6 @@
 import { fetchingMovieDetails } from '../gallery/fetchingMovieDetails';
 import { updatingMovieHTML } from '../gallery/galleryMarkup';
-import { cbClear, movieId } from '../gallery/galleryVariables';
+import { cbClear, movieId, loader } from '../gallery/galleryVariables';
 import jsLocalStorage from './jsLocalStorage';
 
 /**
@@ -26,6 +26,7 @@ function handleLibraryButtonClick(
   const secBtn = document.querySelector(otherBtn);
 
   button.addEventListener('click', async () => {
+    loader.classList.remove('loader--is-hidden');
     cbClear();
     button.classList.add(headerBtnClass);
     if (secBtn.classList.remove(headerBtnClass) !== null)
@@ -35,6 +36,7 @@ function handleLibraryButtonClick(
     const movieIds = jsLocalStorage.load(storageKey);
     movieId.push(...movieIds);
     await fetchingMovieDetails();
+    loader.classList.add('loader--is-hidden');
     updatingMovieHTML();
   });
 }

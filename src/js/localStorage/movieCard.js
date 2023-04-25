@@ -5,7 +5,6 @@
   Funkcja zwraca kod HTML dla karty filmowej.
 */
 export const movieCard = e => {
-  console.log(e);
   const genres = e.genres.map(genre => ` ${genre.name}`);
   const markup = `<div class="movie__card" data-id="${e.id}">
    <div class="movie__imgbox">

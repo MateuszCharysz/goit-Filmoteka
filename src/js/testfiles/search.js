@@ -1,8 +1,3 @@
-// to import object => import { SEARCH_TEST } from './testfiles/search';
-// https://developers.themoviedb.org/3/getting-started/images
-// to jest to co otrzymujemy z https://api.themoviedb.org/3/search/movie?api_key=64cb7e9375c055230d64b013c4bca79f&query=dog
-// aby tego użyć wstawiamy zmienną SEARCH_TEST w miejsce obiektu który miałby przyjść z fetcha (do testowania mark up)
-
 export const SEARCH_TEST = {
   page: 1,
   results: [

@@ -6,7 +6,7 @@ import { createPagination } from '../pagination';
 import { movieId, cbClear } from './galleryVariables';
 import { loader } from './galleryVariables';
 
-const renderMovieList = moviesData => {
+const setMovieList = moviesData => {
   moviesData.results.forEach(movie => {
     movieId.push(movie.id);
   });
@@ -14,12 +14,12 @@ const renderMovieList = moviesData => {
 };
 
 const showMoviesKeyWords = async (page, search) => {
+  loader.classList.remove('loader--is-hidden');
   const moviesData = await fetchingMoviesSearch(page, search);
-  renderMovieList(moviesData);
+  setMovieList(moviesData);
   await fetchingMovieDetails();
-  loader.classList.add('loader--visibility');
+  loader.classList.add('loader--is-hidden');
   updatingMovieHTML();
-  console.log('movies data', moviesData);
   const pagination = createPagination(moviesData);
   pagination.on('beforeMove', ({ page }) => {
     cbClear();

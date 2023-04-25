@@ -1,3 +1,9 @@
+/**
+  Funkcja 'movieCard' generuje kod HTML dla pojedynczej karty filmu, na podstawie obiektu filmowego przekazanego jako argument 'e'.
+  W kodzie HTML zawiera pola takie jak: tytuł filmu, obrazek, lista gatunków, rok premiery i unikalne id dla danego filmu.
+  Jeśli obiekt filmowy zawiera adres do plakatu, to jest on wyświetlany. W przeciwnym przypadku wyświetlany jest domyślny obrazek.
+  Funkcja zwraca kod HTML dla karty filmowej.
+*/
 export const movieCard = e => {
   const genres = e.genres.map(genre => genre.name).join(', ');
   const markup = `<div class="movie__card" data-id="${e.id}">

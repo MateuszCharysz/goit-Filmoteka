@@ -1,9 +1,3 @@
-/*
- * Główny plik dla stylów.
- * Wszystkie partials podłączamy tutaj.
- */
-
-// Style dla pliku z przykładem HTML fragmentu
 @import '~node_modules/modern-normalize/modern-normalize.css';
 @import './utils/media-query';
 @import './general';
@@ -13,3 +7,4 @@
 @import './partials/footer';
 @import './partials/modal';
 @import './partials/gallery';
+@import './partials/loader';

@@ -16,5 +16,4 @@ export const fetchingMovieDetails = async () => {
       console.log(error);
     }
   }
-  console.log(movieDetails);
 };

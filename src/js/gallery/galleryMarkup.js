@@ -3,6 +3,7 @@ export const updatingMovieHTML = () => {
   let myHTML = '';
   let genre;
   let yearOfProduction;
+
   movieDetails.forEach(movie => {
     genre = movie.genres.map(genre => ` ${genre.name}`);
     yearOfProduction = movie.release_date.substring(0, 4);
@@ -30,4 +31,5 @@ export const updatingMovieHTML = () => {
   });
   movieBox.innerHTML += myHTML;
 };
-// <p style="display:none">${movie.id}<p></p>
+
+

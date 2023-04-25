@@ -5,7 +5,7 @@
   Funkcja zwraca kod HTML dla karty filmowej.
 */
 export const movieCard = e => {
-  const genres = e.genres.map(genre => genre.name).join(', ');
+  const genres = e.genres.map(genre => ` ${genre.name}`);
   const markup = `<div class="movie__card" data-id="${e.id}">
    <div class="movie__imgbox">
      <img class="movie__img" src="${
@@ -20,10 +20,10 @@ export const movieCard = e => {
    </p>
    <div class="movie__info">
      <p class="movie__genres">
-       ${genres.slice(0, 2)}&nbsp;
+       ${genres.slice(0, 2)}&nbsp
      </p>
      <p class="movie__year">
-       | ${''}
+       | ${e.release_date.slice(0, 4)}
      </p>
    </div>
   </div>

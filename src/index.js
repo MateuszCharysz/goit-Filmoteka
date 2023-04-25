@@ -4,6 +4,7 @@ import showMovies from './js/gallery/renderGalleryMain';
 import showMoviesKeyWords from './js/gallery/renderGallerySearch';
 import { movieBox, cbClear } from './js/gallery/galleryVariables';
 import localStorageMod from './js/localStorage/localStorageMod';
+import { searchKeyup } from './js/searchKeyup';
 // import debounce from 'lodash.debounce';
 
 localStorageMod.createLocalStorage();
@@ -19,6 +20,8 @@ button.addEventListener('click', event => {
   cbClear();
   showMoviesKeyWords(1, searchInput.value);
 });
+
+searchKeyup(searchInput, 13, cbClear, showMoviesKeyWords);
 
 const searchWarninng = document.querySelector('.header__search--warning');
 

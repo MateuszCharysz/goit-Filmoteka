@@ -3,10 +3,10 @@ import { fetchingMoviesSearch } from './fetchingMoviesSearch';
 import { fetchingMovieDetails } from './fetchingMovieDetails';
 import { updatingMovieHTML } from './galleryMarkup';
 import { createPagination } from '../pagination';
-import { movieId, cbClear } from './galleryVariables';
-import { loader } from './galleryVariables';
+import { movieId, cbClear, loader } from './galleryVariables';
 
 const setMovieList = moviesData => {
+  console.log(moviesData);
   moviesData.results.forEach(movie => {
     movieId.push(movie.id);
   });

@@ -162,8 +162,8 @@
 
     &:hover,
     &:focus {
-      border: 1px solid #ff6b01;
-      color: #ff6b01;
+      border: 1px solid getColor(light-orange);
+      color: getColor(light-orange);
       background-color: $white;
       scale: 1.06;
 
@@ -214,11 +214,11 @@
   border: none;
   color: $white;
 
-  background-color: #ff6b01;
+  background-color: getColor(light-orange);
 
   &:hover,
   &:focus {
-    background-color: #ff6b01;
+    background-color: getColor(light-orange);
     color: $white;
     scale: 1.06;
   }

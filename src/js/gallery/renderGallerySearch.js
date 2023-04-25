@@ -21,7 +21,10 @@ const showMoviesKeyWords = async (page, search) => {
 
   if (moviesData.results.length === 0) {
     searchWarninng.style.display = 'block';
+  } else {
+    searchWarninng.style.display = 'none';
   }
+
   setMovieList(moviesData);
   await fetchingMovieDetails();
   loader.classList.add('loader--is-hidden');

@@ -16,6 +16,12 @@ const setMovieList = moviesData => {
 const showMoviesKeyWords = async (page, search) => {
   loader.classList.remove('loader--is-hidden');
   const moviesData = await fetchingMoviesSearch(page, search);
+
+  const searchWarninng = document.querySelector('.header__search--warning');
+
+  if (moviesData.results.length === 0) {
+    searchWarninng.style.display = 'block';
+  }
   setMovieList(moviesData);
   await fetchingMovieDetails();
   loader.classList.add('loader--is-hidden');

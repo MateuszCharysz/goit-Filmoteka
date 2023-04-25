@@ -156,11 +156,14 @@
     background-color: transparent;
     text-transform: uppercase;
     border: 1px solid #000000;
+    transition: ease;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
-      border: none;
-      color: $white;
-      background-color: #ff6b01;
-      transition: background-color 0.2s ease-in-out;
+      border: 1px solid #ff6b01;
+      color: #ff6b01;
+      background-color: $white;
+      scale: 1.06;
     }
     @include tablet {
       width: 125.03px;
@@ -206,4 +209,10 @@
   border: none;
   color: $white;
   background-color: #ff6b01;
+
+  &:hover {
+    background-color: #ff6b01;
+    color: $white;
+    scale: 1.06;
+  }
 }

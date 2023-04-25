@@ -19,6 +19,15 @@ const setMovieList = moviesData => {
 const showMoviesKeyWords = async (page, search) => {
   loader.classList.remove('loader--is-hidden');
   const moviesData = await fetchingMoviesSearch(page, search);
+
+  const searchWarninng = document.querySelector('.header__search--warning');
+
+  if (moviesData.results.length === 0) {
+    searchWarninng.style.display = 'block';
+  } else {
+    searchWarninng.style.display = 'none';
+  }
+
   setMovieList(moviesData);
   movieId.map(id => fetchMovieById(id).then(movieData => {
     movieBox.innerHTML += movieCard(movieData)

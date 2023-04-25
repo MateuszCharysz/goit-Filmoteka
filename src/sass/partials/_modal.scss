@@ -155,12 +155,18 @@
     line-height: 16px;
     background-color: transparent;
     text-transform: uppercase;
-    border: 1px solid $black;
-    &:hover {
-      border: none;
-      color: $white;
-      background-color: getColor(light-orange);
-      transition: background-color 0.2s ease-in-out;
+    border: 1px solid #000000;
+    transition: ease;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus {
+      border: 1px solid getColor(light-orange);
+      color: getColor(light-orange);
+      background-color: $white;
+      scale: 1.06;
+
     }
     @include tablet {
       width: 125.03px;
@@ -186,7 +192,9 @@
       right: 8px;
       border: none;
       background-image: url('../images/svg/close.svg');
-      &:hover {
+
+      &:hover,
+      &:focus {
         background-color: transparent;
       }
     }
@@ -205,5 +213,14 @@
 .is-save {
   border: none;
   color: $white;
+
   background-color: getColor(light-orange);
+
+  &:hover,
+  &:focus {
+    background-color: getColor(light-orange);
+    color: $white;
+    scale: 1.06;
+  }
+
 }

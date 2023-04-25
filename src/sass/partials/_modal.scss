@@ -159,7 +159,9 @@
     transition: ease;
     transition-duration: 0.3s;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    &:hover {
+
+    &:hover,
+    &:focus {
       border: 1px solid #ff6b01;
       color: #ff6b01;
       background-color: $white;
@@ -189,7 +191,9 @@
       right: 8px;
       border: none;
       background-image: url('../images/svg/close.svg');
-      &:hover {
+
+      &:hover,
+      &:focus {
         background-color: transparent;
       }
     }
@@ -210,7 +214,8 @@
   color: $white;
   background-color: #ff6b01;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #ff6b01;
     color: $white;
     scale: 1.06;

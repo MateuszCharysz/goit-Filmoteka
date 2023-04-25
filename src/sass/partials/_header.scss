@@ -162,7 +162,8 @@
   text-align: center;
   text-transform: uppercase;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #ff6b01;
     border-color: #ff6b01;
   }

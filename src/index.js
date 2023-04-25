@@ -13,6 +13,11 @@ showMovies();
 const button = document.getElementById('button');
 const searchInput = document.getElementById('search');
 // renderGallerySearch => fetchingMoviesSearch => fetchingMovieDetails => galleryMarkup => pagination
+const searchWarninng = document.querySelector('.header__search--warning');
+
+searchInput.addEventListener('input', event => {
+  searchWarninng.style.display = 'none';
+});
 
 button.addEventListener('click', event => {
   event.preventDefault();

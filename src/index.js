@@ -4,15 +4,13 @@ import showMovies from './js/gallery/renderGalleryMain';
 import showMoviesKeyWords from './js/gallery/renderGallerySearch';
 import { movieBox, cbClear } from './js/gallery/galleryVariables';
 import localStorageMod from './js/localStorage/localStorageMod';
-// import debounce from 'lodash.debounce';
+import { searchKeyup } from './js/searchKeyup';
 
 localStorageMod.createLocalStorage();
-//renderGallery => fetchingMovies => fetchingMovieDetails => galleryMarkup => pagination
 showMovies();
 
 const button = document.getElementById('button');
 const searchInput = document.getElementById('search');
-// renderGallerySearch => fetchingMoviesSearch => fetchingMovieDetails => galleryMarkup => pagination
 const searchWarninng = document.querySelector('.header__search--warning');
 
 searchInput.addEventListener('input', event => {
@@ -23,6 +21,16 @@ button.addEventListener('click', event => {
   event.preventDefault();
   cbClear();
   showMoviesKeyWords(1, searchInput.value);
+});
+
+searchKeyup(searchInput, 13, cbClear, showMoviesKeyWords);
+
+button.addEventListener('click', event => {
+  if (searchInput.value.length === 0) {
+    searchWarninng.style.display = 'block';
+  } else {
+    searchWarninng.style.display = 'none';
+  }
 });
 
 movieBox.addEventListener('click', openModal);

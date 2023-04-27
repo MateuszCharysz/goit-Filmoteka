@@ -13,4 +13,4 @@ Skład zespołu:
 
 ## Wykorzystane technologie/biblioteki:
 
-`VSCode`, `parcel`, `node.js`, `npm`, `modern-normalize`, `HTML + CSS`, `SASS`, `Notiflix`, `tui-pagination`, `BEM`, `Vanila JS`, `DOM API`, `AJAX`, `Local Storage`, `TMDB API`
+`VSCode`, `parcel`, `modern-normalize`, `HTML + CSS`, `SASS`, `Notiflix`, `tui-pagination`, `BEM`, `JS`, `DOM API`, `AJAX`, `Local Storage`, `TMDB API`

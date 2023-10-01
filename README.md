@@ -2,14 +2,14 @@
 
 Skład zespołu:
  - Mateusz Charysz - Team Lead - scalanie, różne poprawki, rozwiązywanie konfliktów Github, HTML + CSS, testowanie
- - Maggie Wesołowska - Scrum Master - Login, Register, tło, MUI ex-zelot:)
- - Beniamin Brzeziński - dev - backend, redux, elementy logiczne, serwer docelowy, uwierzytelnianie, private/restricted routes
- - Mariusz - dev - backend, swagger
- - Marta Schab - dev - diagram, testowanie
- - Marcin "P" Piórkowski - dev - transakcje - wyświetlanie, modale transakcji, team-modal
- - Marcin "Z" Zboroń - dev - Currency, Balanse, team-modal, obrabianie grafiki
- - Bartek Brański - Code Review -scalanie, różne poprawki, rozwiązywanie konfliktów Github, header, modal logout,
+ - Mateusz Rybczyński - Header, Header Library, oskryptowanie przycisków Header Library, HTML + CSS, komunikaty header, testowanie
+ - Paulina Woźniak - tworzenie galerii Main i Search, HTML + CSS, fetche, poprawki do całości kodu, testowanie
+ - Mateusz Potocki - modal CSS, połączenie modala z LS, tworzenie galerii z LS, dynamiczne usuwanie z wyświetlonej galerii LS, pierwsza makieta strony,HTML + CSS testowanie
+ - Yurii Sokolovskyi - funkcje obsługujące local storage, testowanie
+ - Weronika Niemczyk - Scrum Master - paginacja, implementacja paginacji w fetchach w galerii testowanie
+ - Szymon Kokot, - odchudzenie grafiki, poznanie API, praca nad local storage, testowanie
+ - Piotr Koczkodaj - fetche Main i Search, loader, HTML + CSS, testowanie
 
 ## Wykorzystane technologie/biblioteki:
 
-`VSCode`, `Vite`, `modern-normalize`, `HTML + CSS`, `Notiflix`, `JS`, `REACT.JS`, `NODE.JS`, `express`,  `chart.js`, `react-chartjs-2`, `axios`, `nanoid`,`react-media`,`redux-toolkit`, `react-redux`, `redux-persist`, `react-loader-spinner`
+`VSCode`, `parcel`, `modern-normalize`, `HTML + CSS`, `SASS`, `Notiflix`, `tui-pagination`, `BEM`, `JS`, `DOM API`, `AJAX`, `Local Storage`, `TMDB API`
